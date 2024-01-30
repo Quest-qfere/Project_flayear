@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -8,6 +8,7 @@ init offset = -1
 ################################################################################
 ## Styles
 ################################################################################
+
 
 style default:
     properties gui.text_properties()
@@ -95,6 +96,7 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
+
 screen say(who, what):
     style_prefix "say"
 
@@ -160,6 +162,34 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
+#Here's my definiton of the gallery the buttons that I created here will be used in the gallery.rpy
+screen gallery:
+
+    # Ensure this replaces the main menu.
+    tag menu
+
+    # The background.
+     
+    add "images/title.png"
+
+ 
+    
+    # A grid of buttons.
+    grid 2 2:
+
+        xfill True
+        yfill True
+
+        # single image buttons, we could lock them and put placeholder images. Also I cropped them to give a thumb nail apparence that wasan't really necessary.
+        add g.make_button("Machineigh", (im.Scale("images/7AA453CD-35EE-46E4-872C-8C71F3EEE617.png",234,142)), xalign=0.5, yalign=0.5) 
+        add g.make_button("miach", (im.Scale("images/8D95AB33-5623-4129-9D70-D7E040F0588E.png",234,142)), xalign=0.5, yalign=0.5)
+
+       
+
+
+        # The screen is responsible for returning to the main menu. It could also
+        # navigate to other gallery screens.
+        textbutton "Return" action Return() xalign 0.5 yalign 0.5
 
 ## Input screen ################################################################
 ##
@@ -308,10 +338,13 @@ screen navigation():
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
+            #text for the art room button
+            textbutton "Art room" action ShowMenu("gallery")
 
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
+            
 
         if _in_replay:
 
@@ -1516,3 +1549,4 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
