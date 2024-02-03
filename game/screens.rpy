@@ -81,6 +81,20 @@ style frame:
 ## In-game screens
 ################################################################################
 
+## Now playing screen
+##
+## Denotes the currently playing music track.
+screen nowplaying():
+    timer 1.0 action [Hide("nowplaying", transition=Dissolve(2.0))]
+    frame:
+        id "musicwindow"
+        text CURR_PLAYING
+        xpadding 90
+        ypadding 20
+        xalign 0.7
+        yalign 0.7
+
+
 
 ## Say screen ##################################################################
 ##

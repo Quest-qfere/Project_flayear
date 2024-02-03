@@ -14,17 +14,24 @@ define CAIN  = Character("Cain", who_suffix="\n{size=-15}Code name"  )
 define DEAN = Character("Dean", who_suffix="\n{size=-15}Code name"  )
 
 define KIT = Character("Kit", who_suffix="\n{size=-15}Code name"  )
+
+# Global variables
+
+define CURR_PLAYING = ""
+
+
 # The game starts here.
 
 label start:
 
-
-
     # These display lines of dialogue.
+    
+    define CURR_PLAYING = "Track 1 - Artist 1"
+    show screen nowplaying()
 
     " My name is Machina X Flayon, the pilot of guild Tempus." 
-    " As a guild of smart, brave adventurers, we get commissioned for quests often, but today was different; a quest came through for me specifically!
-"   
+
+    " As a guild of smart, brave adventurers, we get commissioned for quests often, but today was different; a quest came through for me specifically!"   
     FLAY "Miach Miach"
 
     # This ends the game.
