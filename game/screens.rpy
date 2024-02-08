@@ -173,7 +173,7 @@ screen gallery:
     add "images/art_room.png"
     default curpage = "page1"
     vbox  :
-        hbox xalign 0.8 :
+        hbox xalign 1.0 :
             textbutton "Page 1" action SetScreenVariable("curpage", "page1") 
             textbutton "Page 2" action SetScreenVariable("curpage", "page2") 
             textbutton "Page 3" action SetScreenVariable("curpage", "page3") 
@@ -187,14 +187,14 @@ screen gallery:
 
         # single image buttons, we could lock them and put placeholder images. Also I cropped them to give a thumb nail apparence that wasan't really necessary.
              if curpage == "page1":
-               add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.3, yalign=0.7) 
-               add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.3, yalign=0.7) 
+               add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+               add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
              if curpage == "page2":
-               add g.make_button("himbo",im.Scale("images/himbo_title_card.png",400,400),xalign=0.3, yalign=0.7)
-               add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.3, yalign=0.7)
+               add g.make_button("himbo",im.Scale("images/himbo_title_card.png",400,400),xalign=0.5, yalign=0.5)
+               add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.5, yalign=0.5)
              if curpage == "page3":
-                add g.make_button("example",im.Scale("images/example.png",400,400),xalign=0.3, yalign=0.7)
-                add g.make_button("maid",im.Scale("images/example.png",400,400),xalign=0.3, yalign=0.7)
+                add g.make_button("example",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
+                add g.make_button("maid",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
 
         # The screen is responsible for returning to the main menu. It could also
         # navigate to other gallery screens.
@@ -347,10 +347,10 @@ screen navigation():
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
-            textbutton "Art room" action ShowMenu("gallery")
+            
 
         textbutton _("Load") action ShowMenu("load")
-
+        textbutton "Art room" action ShowMenu("gallery")
         textbutton _("Preferences") action ShowMenu("preferences")
             
 
