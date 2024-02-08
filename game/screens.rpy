@@ -163,6 +163,36 @@ style say_dialogue:
     ypos gui.dialogue_ypos
 
 #Here's my definiton of the gallery the buttons that I created here will be used in the gallery.rpy
+screen music_room:
+
+    tag menu
+
+   # The background.
+    add "images/music_room.png"
+    frame:
+        has vbox
+        # The buttons that play each track.
+        textbutton "Track 1" action mr.Play("music/baby-mandala-169039.mp3")
+        textbutton "Track 2" action mr.Play("music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
+        textbutton "Track 3" action mr.Play("music/midnight-forest-184304.mp3")
+        textbutton "sfx1" action mr.Play("sfx/sliding-noise-v2-83483.mp3")
+        textbutton "sfx2" action mr.Play("sfx/jixaw-metal-pipe-falling-sound.mp3")
+        null height 20
+
+        # Buttons that let us advance tracks.
+        textbutton "Next" action mr.Next()
+        textbutton "Previous" action mr.Previous()
+
+        null height 20
+
+        # The button that lets the user exit the music room.
+        textbutton "Main Menu" action ShowMenu("main_menu")
+
+    # Start the music playing on entry to the music room.
+    on "replace" action mr.Play()
+
+    # Restore the main menu music upon leaving.
+    on "replaced" action Play("music","music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
 screen gallery:
 
     # Ensure this replaces the main menu.
@@ -171,7 +201,9 @@ screen gallery:
     # The background.
      
     add "images/art_room.png"
+    #default page
     default curpage = "page1"
+    #the vbox part allows for mutlipe pages
     vbox  :
         hbox xalign 1.0 :
             textbutton "Page 1" action SetScreenVariable("curpage", "page1") 
@@ -179,7 +211,7 @@ screen gallery:
             textbutton "Page 3" action SetScreenVariable("curpage", "page3") 
             yoffset 1000
     
-    # A grid of buttons.
+    # A grid of buttons, we can expand the scope to include more images later.
         grid 2 2:
 
              xfill True
@@ -351,6 +383,7 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
         textbutton "Art room" action ShowMenu("gallery")
+        textbutton "Music room" action ShowMenu("music_room")
         textbutton _("Preferences") action ShowMenu("preferences")
             
 
