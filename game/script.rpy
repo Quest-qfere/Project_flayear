@@ -4,9 +4,10 @@
 # name of the character.
 # We can change the size and the codename in the future by changing the values in size
 # if you wanna change the height of the name box just change the variable define gui.name_ypos = -100 in the gui file
+define config.tag_layer = {'bg':'background'}
 init:
-    image general_area="images/general_area.PNG"
-    image navigation_room="images/navigation_room.png"
+    image bg general_area="images/trnsptoutsideclues.png"
+    image bg navigation_room="images/navigation_room.png"
     image flay_neutral="images/Neutral_Flayon.png"
     image navi="images/navi.png"
     image navi_annoyed="images/Navi_annoyed.png"
@@ -32,18 +33,19 @@ define CAIN  = Character("Cain", who_suffix="\n{size=-15}Code name"  )
 define DEAN = Character("Dean", who_suffix="\n{size=-15}Code name"  )
 
 define KIT = Character("Kit", who_suffix="\n{size=-15}Code name"  )
+#dark light tint matrixcolor TintMatrix("7A7A7B")
+# dark tint  matrixcolor TintMatrix("4C4CAA")
 # The game starts here.
-transform big_size:
+transform  big_size:
         zoom 2.0
 label start:
-
-
-    
-    # These display lines of dialogue.
+    # These display lines of diaslogue.
     "This is  a super scuffed demo of the scene without the minigame(I'll try to learn how to do that)"
     play sound "sfx/door-bang-1wav-14449.mp3"
-    scene general_area at big_size
-    show flay_neutral at left
+ 
+    scene bg general_area 
+    show flay_neutral at left:
+                matrixcolor TintMatrix("4C4CAA")
     #" My name is Machina X Flayon, the pilot of guild Tempus." 
     #" As a guild of smart, brave adventurers, we get commissioned for quests often, but today was different; a quest came through for me specifically!
     # all of this  just showing a draf from a machiroon 
@@ -63,7 +65,8 @@ label start:
     show navi at right
     NAVI "Well… I suppose I can’t fault you for wanting an audience with me. It’s not your fault I’m so captivating."
     hide flay_neutral
-    show flay_unamused at left
+    show flay_unamused at left:
+          matrixcolor TintMatrix("7A7A7B")
     FLAY "(We all know better by now. Navi’s ego is bigger than the R-TRUS itself.)"
     hide navi
     show navi_smug at right
@@ -72,7 +75,7 @@ label start:
     show navi_confused at right
     NAVI "Now that I think about it, what exactly are you doing?"
     with Dissolve(.5)
-    scene navigation_room at big_size
+    scene bg navigation_room at big_size
     hide flay_unamused
     show flay_neutral at left
     FLAY"I’d explain it to you, but I’m pretty sure you don’t care."
