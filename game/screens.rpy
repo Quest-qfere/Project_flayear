@@ -222,7 +222,7 @@ screen gallery:
                add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
                add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
              if curpage == "page2":
-               add g.make_button("himbo",im.Scale("images/himbo_title_card.png",400,400),xalign=0.5, yalign=0.5)
+               add g.make_button(name="CAIN",unlocked=(im.Scale("images/himbo_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)),xalign=0.5, yalign=0.5)
                add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.5, yalign=0.5)
              if curpage == "page3":
                 add g.make_button("example",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)

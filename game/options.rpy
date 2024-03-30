@@ -13,6 +13,7 @@
 ## The _() surrounding the string marks it as eligible for translation.
 
 define config.name = _("ProjectFlayear")
+define config.layers = [ 'background' 'background_item', 'master', 'transient', 'screens', 'overlay' ]
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
