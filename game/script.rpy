@@ -17,6 +17,8 @@ define DEAN = Character("Dean", who_suffix="\n{size=-15}Code name"  )
 
 define KIT = Character("Kit", who_suffix="\n{size=-15}Code name"  )
 
+image note = "images/prologue_note_temp.png"
+
 # The game starts here.
 
 label start:
@@ -25,6 +27,14 @@ label start:
     "As a guild of brave, smart adventurers, we get commissioned for quests quite often."
     "But, today was {i}different...{/i} a quest came through, addressed to me specifically!"
     "I wouldn't usually find this strange, but the note attached was... interesting."
+    hide window
+    show note:
+        alpha 0.00
+        xalign 0.5
+        yalign 0.5
+        easein 1.0 alpha 1.00
+    pause 1.0
+    window show
     FLAY "So, I recruited five of the strongest people in my team, also known as the Machiroons!"
     FLAY "And we traveled in none other than my giant mech, the R-TRUS! He's pretty cool!"
     FLAY "We all got ready and set off towards the coordinates..."
