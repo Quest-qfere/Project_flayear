@@ -28,5 +28,5 @@ label start:
     FLAY "Miach Miach"
 
     # This ends the game.
-
+    jump card_game
     return
