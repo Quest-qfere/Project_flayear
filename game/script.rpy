@@ -1,274 +1,179 @@
-# The script of the game goes in this file.
+﻿# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 # We can change the size and the codename in the future by changing the values in size
 # if you wanna change the height of the name box just change the variable define gui.name_ypos = -100 in the gui file
-define config.tag_layer = {'bg':'background'}
-define config.tag_layer={'bg_obj':'background_item'}
-define config.default_text_cps = 45
-screen screen_interactable:
-       imagebutton:
-        xpos 0.5
-        ypos 0.5
-        idle "images/error_screen.png" 
-        hover "images/error_screen_highlight.png" 
-        action Jump("error_message")
-       imagebutton:
-        xpos 0.4
-        ypos 0.5
-        idle "images/running_machine.png" 
-        hover "images/running_machine_highlited.png" 
-        action Jump("running_machine")
-       imagebutton:
-        at halfsize
-        xpos 0.8
-        ypos 0.6
-        idle "images/Placeholder_Cain.png" 
-        hover "images/Placeholder_Cain_highlighted.png" 
-        action Jump("cain_dia")
-       imagebutton:
-        xpos 0.2
-        ypos 0.6
-        idle "images/plushies.png"
-        hover "images/plushies_highlighted.png"
-        action Jump("plushies")
-   
 init:
-    image bg general_area="images/general_area.PNG"
-    image bg kit_room="images/insidedoorclosed_wip.png"
+    image bg general_area="images/general_area.png"
+    image bg navigation_room="images/navigation_room.png"
     image flay_neutral="images/Neutral_Flayon.png"
-    image flay_schocked="images/Neutral_Flayon.png"
-    image flay_scared="images/Neutral_Flayon.png"
+    image navi="images/navi.png"
+    image navi_annoyed="images/Navi_annoyed.png"
     image flay_unamused="images/Flayon_unamused.png"
+    image navi_smug="images/Navi_smug.png"
+    image navi_confused="images/Navi_neutral_confused.png"
     image flayon_neutral_deadpan="images/Flayon_neutral_deadpan.jpg"
-    image flay_thinking="images/Neutral_Flayon.png"
+    image navi_annoyed_borred= "images/Navi_borred_annoyed.png"
     image flayon_annoyed_deadpan="images/Flayon_neutral_deadpan.jpg"
+    image navi_thinking="images/Navi_thinking.png"
     image flayon_glare_annoyed="images/Flayon_glare_annoyed.jpg"
+    image navi_smirk_eye_roll="images/Navi_smug.png"
+    image navi_sigh_annoyed="images/Navi_sigh_annoyed.png"
+    image navi_eyeroll="images/Navi_eyeroll.png"
     image flayon_smirk="images/Flayon_smirk.jpg"
-    image flayon_excited="images/Neutral_Flayon.png"
-    image flayon_confused="images/Neutral_Flayon.png"
-    image flay_stunned="images/Neutral_Flayon.png"
-    image kit_with_grenade="images/placeholder_kit.png"
-    image kit_neutral="images/placeholder_kit.png"
-    image kit_thinking="images/placeholder_kit.png"
-    image kit_laugh="images/placeholder_kit.png"
-    image kit_awkward="images/placeholder_kit.png"
-    image kit_grumpy="images/placeholder_kit.png"
-    image cain_flexing="images/Placeholder_Cain.png"
-    image cain_out_of_breath="images/Placeholder_Cain.png"
-    image error_screen="images/error_screen.png"
+    image flayon_confused="images/Flayon_glare_annoyed.jpg"
+    image flayon_surprised="images/Flayon_neutral_deadpan.jpg"
 
 define FLAY = Character("Flayon", who_suffix="\n{size=-15}Ace Pilot",what_slow_cps=25  )
 
 define NAVI  = Character("Navi", who_suffix="\n{size=-15}Code name",what_slow_cps=25  )
 
-define CAIN  = Character("Cain", who_suffix="\n{size=-15}Code name",what_slow_cps=25  )
+define CAIN  = Character("Cain", who_suffix="\n{size=-15}Code name"  )
 
-define DEAN = Character("Dean", who_suffix="\n{size=-15}Code name",what_slow_cps=25  )
+define DEAN = Character("Dean", who_suffix="\n{size=-15}Code name"  )
 
-define KIT = Character("Kit", who_suffix="\n{size=-15}Code name",what_slow_cps=25  )
+define KIT = Character("Kit", who_suffix="\n{size=-15}Code name"  )
 #dark light tint matrixcolor TintMatrix("7A7A7B")
 # dark tint  matrixcolor TintMatrix("4C4CAA")
 # The game starts here.
-transform cain_position:
-        xalign 0.8
-        yalign 0.6
-        zoom 0.2
 transform  big_size:
         zoom 2.0
-transform halfsize:
-        zoom 0.2
-transform dark_transformation:
-        matrixcolor BrightnessMatrix(-0.5)
 label start:
     # These display lines of diaslogue.
-    show flay_neutral at dark_transformation,right
-    FLAY "KIT, what is going on?{p}I can’t see anything here.{p}Was the power not rested here?{p}Hold on, where’s that light switch…"
-    show kit_with_grenade at left,dark_transformation
-    KIT "Welcome welcome everyroon! It's now time to finally get this party started!"
-    extend "  Entering the stage for the first time ever, put your parts and paws together for our special guest of the night, the main contestant of our show!"
-    KIT "The one that pilots our home and lands in our hearts. The universally loved:Machina X Flayon"
-    queue sound "sfx/applause-75314.mp3"
-    scene bg kit_room 
-    show flay_schocked at right
-    show kit_neutral at left
-    FLAY "KIT… Who are you talking to?{p}Where did that sound come from if we’re the only two people in this room?"
-    KIT "Eheh, we’re not the only ones here, silly!{p}The other Machiroons are just on the other side and they’re playing along with us right now.{p}It's all just part of the game after all!"
-    queue sound "sfx/misc-audience-laughter-noises-40890.mp3"
-    KIT "Now then, let’s begin the final event of the night.{p}Welcome everyroon to The Most Epic Trivia Quiz of Ultimate Mystery!{p}Or for short TMETQUM!"
-    show kit_thinking at left
-    KIT "… Name still pending review for more awesomeness."
-    show kit_with_grenade at left
-    KIT "Anywwaaayyyy…~!{p}This challenge is intended to be your final step in this long journey of helping us Machiroons.{p}Can you face the task head-on and give it your all?"
-    KIT  "Will you use every ounce of your mind to unravel the mysteries this journey has brought you to!?{p}Oh wow, I'm so excited!{p}Here, Flayon catch!"
-    show flay_scared at right
-    FLAY "Huh… HUH-!?{p}W-Why did you toss me a grenade?!{p}I don’t want it!"
-    KIT "D’aww, don’t be scared. It's not gonna blow up on you as long as you just don’t drop it! Or pull that silver pin at the top."
-    extend   "Oh man, then things will really go off the charts with a sudden BOOM!!" 
-    KIT "Just use it when picking your answer, it will be useful! Now, let the games begin!"
-    queue sound"sfx/applause-75314.mp3"
-    KIT "Alrighty~! The objective of the game is super duper easy, like so simple." 
-    extend "{p}Use your brain to guess correctly and win!"
-    KIT "There are seven questions in total, and once you finish, you’ll get the final item in our quest and win!" 
-    extend "{p}Sounds painless, doesn’t it?"
-    FLAY "It does sound simple enough… {p}But what's the catch?{p}No tricks this time?"
-    KIT "Ehe, well… not reaaallly! You’ll see why it's called The Most Epic Trivia-!{p}Ah, well you get the point.{p}Onto the game!!"
-label gameshow:
-     $ wrong_ans=0
-     "Question 1: What did Flayon cook up for Valentine’s Day in 2023?"
-     menu:
-          "Special Stream":
-                 KIT "Ooh, that wasn’t quite what we were looking for but that’s ok!"
-                 $ wrong_ans=wrong_ans+1
-          "Cover":
-                 KIT "Talk about beginner’s luck!{p}You got it on the first try~"
-          "Machiroons":
-                 KIT "Ooh, that wasn’t quite what we were looking for but that’s ok!"
-                 $ wrong_ans=wrong_ans+1
-          "Voice Tweet":
-                 KIT "Ooh, that wasn’t quite what we were looking for but that’s ok!"
-                 $ wrong_ans=wrong_ans+1
-     "Question 2: What was the first game that Flayon and Gavis Bettel collaborated on?"
-     menu:
-          "Cuphead":
-                 KIT "Wrong, sorry~"
-                 $ wrong_ans=wrong_ans+1
-          "Resident Evil 6":
-                 KIT "Wrong, sorry~"
-                 $ wrong_ans=wrong_ans+1
-          "World of Warcraft":
-                 KIT "Wrong, sorry~"
-                 $ wrong_ans=wrong_ans+1
-          "Ultimate Horse Chicken":
-                 KIT "Hey, you got it! Hey, You're not bad!"
-     "Question 3: Who out of these Lobotomy Corporation NPCs did Flayon receive first?"
-     menu:
-          "Poussey":
-                 KIT "Ding ding! You got that one really quick. Think your luck will run out?"
-          "Joshua":
-                 KIT "Nope, you weren’t even close on that! That’s a little embarrassing…"
-                 $ wrong_ans=wrong_ans+1
-          "Zayn":
-                 KIT "Nope, you weren’t even close on that! That’s a little embarrassing…"
-                 $ wrong_ans=wrong_ans+1
-          "Kukuru":
-                 KIT "Nope, you weren’t even close on that! That’s a little embarrassing…"
-                 $ wrong_ans=wrong_ans+1
-     "Question 4: What is Flayon’s official title in the guild Tempus?"
-     menu:
-          "Customer service":
-                 KIT "Ouch! I thought you would have gotten that easy peasy…"
-                 $  wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Customer care":
-                 KIT "Ouch! I thought you would have gotten that easy peasy…"
-                 $  wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Customer value":
-                 KIT "Ouch! I thought you would have gotten that easy peasy…"
-                 $  wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Customer support":
-                 KIT "Aw man, you got it right. I wonder if I should make these harder!"
-     "Question 5: Outside of Vanguard, which HQ member did Flayon have his first collab stream with?"
-     menu:
-          "Altare":
-                 KIT "Hey, you got another one! Are you sure you’re not cheating~"
-          "Vesper":
-                 KIT "Oh dear… and that was one of our easy questions too…"
-                 $  wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Axel":
-                 KIT "Oh dear… and that was one of our easy questions too…"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Magni":
-                 KIT "Oh dear… and that was one of our easy questions too…"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-     "Question 6: Which of these races did Flayon pick for his character selection in Elder Scrolls IV: Oblivion?"
-     menu:
-          "Khajiit":
-                 KIT "Another successful answer was found!{p}Man, you’re really good at this!"
-          "Redguard":
-                 KIT "Guess that one was just a bit too hard for you.{p}Let’s give you an easier one~"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Imperial":
-                 KIT "Guess that one was just a bit too hard for you.{p}Let’s give you an easier one~"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Orsimer":
-                 KIT "Guess that one was just a bit too hard for you.{p}Let’s give you an easier one~"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-     "Question 7: How many members are there in the Tempus Guild, including inactive members?"
-     menu:
-          "Four":
-                 KIT KIT "Ohh, and a fumble on the last question!{p}That isn’t good…~"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Eight":
-                 KIT "Holy moly, you got it!"
-          "Ten":
-                 KIT "Ohh, and a fumble on the last question!{p}That isn’t good…~"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-          "Twelve":
-                 KIT "Ohh, and a fumble on the last question!{p}That isn’t good…~"
-                 $ wrong_ans=wrong_ans+1
-                 if(wrong_ans>=4):
-                     jump bad_end
-     FLAY "Alright! That was all of them right, so what’s my prize?"
-     KIT "Looks like you got yourself a pretty epic memory there.{p}But is it as good as you think it is?{p}We aren’t finished just yet!"
-     FLAY "You… mean there’s more?"
-     KIT "Not to worry at all Flayon!{p}You have a pretty awesome memory but were you able to guess what the meaning behind all these answers was?"
-     FLAY "I thought you said that there weren’t going to be any trick questions during this quiz!"
-     show kit_laugh at left
-     KIT "Well, it was a half yes half no kinda answer.{p}We gotta keep you on your toes after all~...{p}Now, the final question is going to make it or break it.{p} Will you overcome or will you fall into despair?!"
-     KIT "Oh the horror, oh the humanity!{p}For the final and last question of our ultimate quiz it is-!!"
-     $ final_answer=renpy.input("FINAL: What do all of these answers spell out?", length=32)
-     $ final_answer = final_answer.lower()
-     if final_answer == "cupcake" :
-      queue sound"sfx/applause-75314.mp3"
-      show kit_neutral at left
-      show flay_neutral at right
-      KIT "Yes, yes, YES!! That is it!{p}You are the winner of TMETQUM!{p}And here is the GRAND FINAL PRIZE for our dearest winner!"
-      show kit_awkward at left
-      KIT "Not that we had any other prizes tonight, ehe~"
-      show kit_laugh at left
-      KIT "Bring it out!{p}Our delicious, delectable dessert of the night is…!"
-      KIT "TA-DA!"
-      FLAY "Looks like a normal cupcake to me… is there anything especially grand about this prize?"
-      show kit_grumpy at left
-      KIT "I poured my heart and soul into making this cupcake, I’ll have you know! HMPH!"
-      show kit_neutral at left
-      FLAY "Alright, alright!{p}I admit, it does look pretty tasty…"
-      "Flayon brings the cupcake up to his mouth, but Kit promptly grabs his wrist."
-      KIT "HEY!{p}That there is your final clue and a masterpiece of fine art, it is not for eating!"
-      KIT "Now now, it’s about time you’ve gone out and solved the mystery of the missing Roon once and for all.{p}Finally, all of the pieces will fit into place!"
-      KIT "That’s right!{p}Now, shoo, shoo!{p}Off you go!"
-      "Kit waves Flayon off and shuts the door with a mischievous giggle."
-      FLAY "Their mood doesn’t seem to fit the current situation.{p}I wonder where this final clue will lead me?"
-      return
-     else:
-        jump bad_end
-label bad_end:
-     KIT "Oh dear oh no!!{p}Looks like you got that one completely wrong.{p}I guess that just means you’ll be stuck here permanently relearning every single thing that you should have known from the very beginning." 
-     KIT "How unlucky for you but super duper fun for me! Kyahaha~!!"
-label end:
-
+    "This is  a super scuffed demo of the scene without the minigame(I'll try to learn how to do that)"
+    play sound "sfx/door-bang-1wav-14449.mp3"
  
+    scene bg general_area 
+    show flay_neutral at left:
+                matrixcolor TintMatrix("4C4CAA")
+    #" My name is Machina X Flayon, the pilot of guild Tempus." 
+    #" As a guild of smart, brave adventurers, we get commissioned for quests often, but today was different; a quest came through for me specifically!
+    # all of this  just showing a draf from a machiroon 
+    FLAY " (For being the Machiroon in charge of movement and communication, the navigator would rather hole up in their room and limit interaction with the rest of us. If one didn’t know any better, they might call Navi a recluse.) "
 
+    FLAY "(But unfortunately…)"
+
+    play sound "sfx/jixaw-metal-pipe-falling-sound.mp3"
+   
+    # This ends the game.
+    NAVI "Gott verdammt!"
+    queue sound "sfx/door-bang-1wav-14449.mp3"
+    queue sound "sfx/sliding-noise-v2-83483.mp3"
+    show navi_annoyed at right
+    NAVI "Machina! I should’ve known it was you! You always pick the worst time to visit me!"
+    hide navi_annoyed
+    show navi at right
+    NAVI "Well… I suppose I can’t fault you for wanting an audience with me. It’s not your fault I’m so captivating."
+    hide flay_neutral
+    show flay_unamused at left:
+        matrixcolor TintMatrix("7A7A7B")
+    FLAY "(We all know better by now. Navi’s ego is bigger than the R-TRUS itself.)"
+    hide navi
+    show navi_smug at right
+    NAVI "Very well. It’d be my pleasure to keep you company for a while. I assume you’re…"
+    hide navi_smug
+    show navi_confused at right
+    NAVI "Now that I think about it, what exactly are you doing?"
+    with Dissolve(.5)
+    scene bg navigation_room at big_size
+    hide flay_unamused
+    show flay_neutral at left
+    FLAY"I’d explain it to you, but I’m pretty sure you don’t care."
+    hide navi_confused
+    show navi_annoyed at right
+    "Rude! I’ll have you know that I care plenty about— "
+    hide flay_neutral
+    show flayon_neutral_deadpan at left
+    FLAY "It’s not about you."
+    hide navi_annoyed
+    show navi_annoyed_borred at right
+    NAVI "Ah, then I’ve already lost all interest. You should’ve led with that first, Machina. Less of our time wasted."
+    hide flayon_neutral_deadpan
+    show flayon_annoyed_deadpan at left
+    FLAY "Yeah. I’m starting to think the same thing."
+    hide navi_annoyed
+    show navi at right
+    NAVI "What I’m more curious about is what you’re doing here. You’re not the type to intrude, and I’m not the type to invite."
+    hide flayon_annoyed_deadpan
+    show flay_neutral at left
+    FLAY "I was actually hoping you could make an exception today. With our little power outage emergency and all."
+    hide navi
+    show navi_thinking at right
+    NAVI "When you put it like that…"
+    show flayon_glare_annoyed at left
+    FLAY "If you say no just to spite me, I will bite you."
+    
+    show navi_smirk_eye_roll at right
+    NAVI "\"All work and no play…\""
+    hide flayon_glare_annoyed
+    show flay_neutral at left
+    FLAY "…"
+    hide navi_smirk_eye_roll
+    show navi_sigh_annoyed at right
+    NAVI "Will you not even humor me, Machina?"
+    hide flayon_neutral_deadpan
+    show flayon_neutral_deadpan at left
+    FLAY "\“...makes Jack a dull boy.” Can I ask you what I want now?"
+    hide navi_sigh_annoyed
+    show navi_eyeroll at right
+    NAVI "Tut, tut, tut! What did I just say? You’re all work and no play!"
+    NAVI "So… play a game with me first! If you can beat me, I will assist you in whatever you need out of the endless kindness of my heart."
+    hide flayon_neutral_deadpan
+    show flayon_smirk at left
+    FLAY "Is that a challenge?"
+    hide navi_eyeroll
+    show navi_smirk_eye_roll at right
+    NAVI "Looks like you’re not as half-witted as you seem. Win and you can go back to running around like a headless hakkito in no time!"
+    FLAY "You’re on."
+
+    "INSERT MINIGAME"
+    "unlock cgs"
+
+    
+    # This ends the game.
+    jump card_game
+    $ persistent.unlock_2=True
+    $ persistent.unlock_1=True
+    "..."
+    return
+label bad_end:
+        NAVI"..."
+        FLAY"..."
+        NAVI "Machina..."
+        FLAY "Navi..."
+        FLAY "(We have been playing this game for 2 hours with no end in sight. For some strange reason, neither of us have managed to match a single pair of cards.)"
+        FLAY "(At this point, I have to wonder…)"
+        FLAY "(Is this game cursed, or are we?)"
+        "Some say the game between Machina and Navi is still going on to this day, stuck in perpetual limbo, neither side winning or losing"
+        "What happened to R-TRUS and Charli?{p}Where are the other Machiroons?{p}Does the power ever come back?{p}Questions we may never find the answers to."
+label good_end:
+    show Navi_annoyed at right
+    show flayon_confused at left
+    scene bg navigation_room at big_size
+    queue sound "sfx/door-bang-1wav-14449.mp3"
+    NAVI "Ugh! You cheated!"
+    FLAY "Wh— How even? This is your game"
+    NAVI "Then it’s a stupid game!{p}A complete waste of my time!"
+    FLAY "(Aaaand there’s the sore loser meltdown.)"
+    "Navi stomps across the room as Flayon looks on curiously. They're holding something when they return and shove it towards him"
+    NAVI "There! This is what you wanted, right? Now get out!"
+    show flayon_surprised at left
+    FLAY "Huh? That’s it?"
+    "Navi lets out a frustrated sound and starts shoving Flayon out the door."
+    NAVI "Get OUT!!!"
+    scene bg general_area 
+    queue sound "sfx/sliding-noise-v2-83483.mp3"
+    NAVI "And DON'T come back!!!"
+    show flayon_neutral_deadpan at left
+    FLAY "..."
+    show flayon_smirk at left
+    FLAY "IT WAS NICE HANGING OUT WITH YOU TOO!"
+    queue sound "sfx/misc-audience-laughter-noises-40890"
+    "There’s a loud thump of something hitting the door on the opposite side"
+    "Flayon looks down at the item in his hand.{p}It’s a transparent plastic cup with the straw still inside.{p}There’s some pink liquid at the bottom."
+    show flay_neutral at left
+    FLAY "Oh, this must be—"
+    "Flayon opens the lid.{p}The faintest hint of strawberries wafts into the air."
+    FLAY "Strawberry milkshake!{p}Damn, they finished it all."
+    FLAY "At least that’s one clue down."

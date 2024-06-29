@@ -9,6 +9,7 @@ init offset = -1
 ## Styles
 ################################################################################
 
+
 style default:
     properties gui.text_properties()
     language gui.language
@@ -95,6 +96,7 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
+
 screen say(who, what):
     style_prefix "say"
 
@@ -160,6 +162,75 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
+#Here's my definiton of the gallery the buttons that I created here will be used in the gallery.rpy
+screen music_room:
+
+    tag menu
+
+   # The background.
+    add "images/music_room.png"
+    frame:
+        has vbox
+        # The buttons that play each track.
+        textbutton "Track 1" action mr.Play("music/baby-mandala-169039.mp3")
+        textbutton "Track 2" action mr.Play("music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
+        textbutton "Track 3" action mr.Play("music/midnight-forest-184304.mp3")
+        textbutton "sfx1" action mr.Play("sfx/sliding-noise-v2-83483.mp3")
+        textbutton "sfx2" action mr.Play("sfx/jixaw-metal-pipe-falling-sound.mp3")
+        null height 20
+
+        # Buttons that let us advance tracks.
+        textbutton "Next" action mr.Next()
+        textbutton "Previous" action mr.Previous()
+
+        null height 20
+
+        # The button that lets the user exit the music room.
+        textbutton "Main Menu" action ShowMenu("main_menu")
+
+    # Start the music playing on entry to the music room.
+    on "replace" action mr.Play()
+
+    # Restore the main menu music upon leaving.
+    on "replaced" action Play("music","music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
+screen gallery:
+
+    # Ensure this replaces the main menu.
+    tag menu
+
+    # The background.
+     
+    add "images/art_room.png"
+    #default page
+    default curpage = "page1"
+    #the vbox part allows for mutlipe pages
+    vbox  :
+        hbox xalign 1.0 :
+            textbutton "Page 1" action SetScreenVariable("curpage", "page1") 
+            textbutton "Page 2" action SetScreenVariable("curpage", "page2") 
+            textbutton "Page 3" action SetScreenVariable("curpage", "page3") 
+            yoffset 1000
+    
+    # A grid of buttons, we can expand the scope to include more images later.
+        grid 2 2:
+
+             xfill True
+             yfill True
+
+        # single image buttons, we could lock them and put placeholder images. Also I cropped them to give a thumb nail apparence that wasan't really necessary.
+             if curpage == "page1":
+               add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+               add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+             if curpage == "page2":
+               add g.make_button("himbo",im.Scale("images/himbo_title_card.png",400,400),xalign=0.5, yalign=0.5)
+               add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.5, yalign=0.5)
+             if curpage == "page3":
+                add g.make_button("example",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
+                add g.make_button("maid",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
+
+        # The screen is responsible for returning to the main menu. It could also
+        # navigate to other gallery screens.
+    textbutton "Return" action Return() xalign 0.1 yalign 0.9
 
 ## Input screen ################################################################
 ##
@@ -308,10 +379,13 @@ screen navigation():
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
+            
 
         textbutton _("Load") action ShowMenu("load")
-
+        textbutton "Art room" action ShowMenu("gallery")
+        textbutton "Music room" action ShowMenu("music_room")
         textbutton _("Preferences") action ShowMenu("preferences")
+            
 
         if _in_replay:
 
