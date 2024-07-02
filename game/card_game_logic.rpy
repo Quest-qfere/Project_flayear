@@ -23,15 +23,15 @@ label card_game:
         def check_match(idx1, idx2, cards, revealed):
             if cards[idx1] == cards[idx2]:
                 renpy.say(None,"Found a match! Revealed both cards %s."%(cards[idx1]))
-                if( len(revealed) == 0):
+                if( len(revealed) == 2):
                     renpy.say(FLAY,"Yes! One win for me!")
                     renpy.say(NAVI,"Simple beginner’s luck.{p}Don’t get overconfident over a single win.")
-                elif (len(revealed)==2):
+                elif (len(revealed)==4):
                     
                     renpy.say(FLAY,"Another victory!")
                     renpy.say(NAVI, "Oh, please.{p}I’ll be sorely disappointed if this is enough to give you a big head")
                     renpy.say(FLAY,"(Says the person who never lets go of a single win.)")
-                elif(len(revealed)==4):
+                elif(len(revealed)==6):
                     renpy.say(FLAY,"Oh hey, would you look at that.")
                     renpy.say(NAVI,"...")
                     renpy.say(FLAY,"If I’m doing my math correctly, there’s not enough pairs left for you to still win.")

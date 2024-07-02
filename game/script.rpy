@@ -169,7 +169,7 @@ label good_end:
     FLAY "..."
     show flayon_smirk at left
     FLAY "IT WAS NICE HANGING OUT WITH YOU TOO!"
-    queue sound "sfx/misc-audience-laughter-noises-40890"
+    queue sound "sfx/door-bang-1wav-14449.mp3"
     "There’s a loud thump of something hitting the door on the opposite side"
     "Flayon looks down at the item in his hand.{p}It’s a transparent plastic cup with the straw still inside.{p}There’s some pink liquid at the bottom."
     show flay_neutral at left
