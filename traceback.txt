@@ -1,34 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 31, in script
-    with AlphaDissolve(1.0)
-Exception: Not a displayable: 1.0
+  File "game/script.rpy", line 14, in script
+    image flayon_neutral=im.scale('images/flayon/flayon_neutral.png', 300,300)
+  File "game/script.rpy", line 14, in <module>
+    image flayon_neutral=im.scale('images/flayon/flayon_neutral.png', 300,300)
+AttributeError: module 'renpy.display.im' has no attribute 'scale'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 31, in script
-    with AlphaDissolve(1.0)
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 1363, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\exports.py", line 1781, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 1548, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 2608, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 2518, in instantiate_transition
-    trans = self.ongoing_transition[layer](
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\transition.py", line 648, in __init__
-    control = renpy.easy.displayable(control)
-  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\easy.py", line 145, in displayable
-    raise Exception("Not a displayable: %r" % (d,))
-Exception: Not a displayable: 1.0
+  File "game/script.rpy", line 14, in script
+    image flayon_neutral=im.scale('images/flayon/flayon_neutral.png', 300,300)
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 922, in execute
+    img = renpy.python.py_eval_bytecode(self.code.bytecode)
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 14, in <module>
+    image flayon_neutral=im.scale('images/flayon/flayon_neutral.png', 300,300)
+AttributeError: module 'renpy.display.im' has no attribute 'scale'
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 ProjectFlayear 1.0
-Tue Apr 23 00:43:24 2024
+Sat Jul 13 14:38:59 2024
