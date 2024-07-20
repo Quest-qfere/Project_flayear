@@ -155,6 +155,12 @@ screen storelooks:
         idle "images/box.png"
         action [ Hide("storelooks"),Show("box"),Jump("box")]
 
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("storelooks"),Jump("gasenter")]
+
 
 screen gaslooks:
     imagebutton:
@@ -181,6 +187,13 @@ screen gaslooks:
         idle "images/gas_station_door.png"
         action [ Hide("gaslooks"),Jump("gasstationenter")]
 
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("gaslooks"),Jump("enterlooks")]
+
+
 screen gaslooks2:
     imagebutton:
         xpos 0.5
@@ -199,6 +212,12 @@ screen gaslooks2:
         ypos 0
         idle "images/gas_station_door.png"
         action [ Hide("gaslooks2"),Jump("gasstationenter")]
+
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("gaslooks2"),Jump("enterlooks")]
 
 
 screen lookaround:
@@ -258,6 +277,12 @@ screen secroom:
         ypos 0.5
         idle "images/computer.png" 
         action [ Hide("secroom"),Jump("computer")]      
+        
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("secroom"),Jump("gasstationenter")]
             
 transform right2:
     xcenter  0.8
@@ -299,15 +324,11 @@ init:
 
 
     default Inventory = inv()
-    default feets = False
-    default cloth = False
-    default wires = False
     default cloth_taken = False
-    default feets2 = False
     default cam = False
-    default paper = False
     default paper_taken = False
     default box = False
+    default seenComp = False
 
     image transition:
         "cg1"                       
@@ -321,15 +342,11 @@ init:
 label start:
     python:
         Inventory = inv()
-        feets = False
-        cloth = False
-        wires = False
         cloth_taken = False
-        feets2 = False
         cam = False
-        paper = False
         paper_taken = False
         box = False
+        seenComp = False
 
        
 
@@ -410,7 +427,6 @@ label scene2:
 label foots:
 
     FLAY "They look like they are heading towards the gas station. But, these aren't my footprints. Does Navi wear shoes like this?"
-    $feets = True
     hide screen closeprints
     jump looks
 
@@ -418,7 +434,6 @@ label cloths:
     FLAY "Oh?"
     hide flay_neutral at left
     show flay_shock at left
-    $cloth = True
 
 menu:
     #ask do we need to get the cloth to go ahead
@@ -443,6 +458,7 @@ menu:
         jump looks
 
 
+
 label lookrshock:
     hide flay_shock at left
     show flay_neutral at left
@@ -453,7 +469,6 @@ label wires:
     FLAY "!?!?!?"
     hide flay_neutral at left
     show flay_shock at left
-    $wires = True
     FLAY "This has clearly been tampered with!"
     FLAY "Listen, If you're gonna tamper with someone's mech, at least hide it better!"
     hide flay_shock at left
@@ -461,7 +476,10 @@ label wires:
     hide screen closewires
     jump looks
 
-
+label enterlooks:
+    scene rtrusExit
+    show flay_neutral at left
+    jump looks
 
 label looks:
 
@@ -478,26 +496,22 @@ label looks2:
     jump looks2
 
 label gasenter:
-    if (wires and cloth and feets):
-        scene gasExit
-        show flay_neutral at left
-        show screen gaslooks
-        jump gaslooks
-    if (not (wires and cloth and feets)):
-        FLAY "I think there is still something here to find."
-    if (cloth_taken):
-        jump looks2
-    jump looks
+    scene gasExit
+    show flay_neutral at left
+    jump gaslooks
+        #if (not (wires and cloth and feets)):
+        #    FLAY "I think there is still something here to find."
+
 
 label gaslooks:
     
 
     if (paper_taken):
-        FLAY "  "
         show screen gaslooks2
+        FLAY "  "
         jump gaslooks
-    FLAY "  "
     show screen gaslooks
+    FLAY "  "
     jump gaslooks 
 
 
@@ -507,7 +521,6 @@ label prints2:
     FLAY "Oh? These look the same?"
     FLAY "But these are... going away from the front doors?"
     FLAY "...?"
-    $feets2 = True
     hide flay_think
     show flay_neutral at left
     hide screen closeprints2
@@ -524,7 +537,6 @@ label paper:
     
     FLAY "...hm!"
     queue sound "sfx/door-bang-1wav-14449.mp3"
-    $paper = True
     hide flay_neutral
     show flay_think at left
     FLAY "Should I keep this...?"
@@ -557,8 +569,8 @@ label gasstationenter:
     show screen storelooks
 
 label store:
-    FLAY "  "
     show screen storelooks
+    FLAY "  "
     jump store 
 
 
@@ -598,13 +610,17 @@ label placeitem:
                 $Inventory.remove(stored)
             "No":
                 show flay_neutral at left
-                jump store                
+                jump store       
+         
     show flay_neutral at left
+    if (Inventory.amount == 0):
+        FLAY "There is nothing to put in the box"
+    
     jump store
 
 
 label securityRoom:
-    if (cam):
+    if (cam and not seenComp):
         hide flay_neutral
         show flay_excite at left
         FLAY "Oh! Maybe I can find the footage from the cameras outside here?"
@@ -615,16 +631,27 @@ label securityRoom:
         hide flay_excite
         show flay_smug at left
         FLAY "Heh, easy."
+        $seenComp = True
         jump securityRoomEnter
+    if (cam and seenComp):
+        jump securityRoomEnter2
     if (not cam):
-        "Unreachable currently. What is the previous dialogue"
-        jump Store
+        "NO DIALOGUE, JUST SAYS SAME TEXT AS  EARLIER BUT WHAT IS SAID EARLIER IDK PLACEHOLDER HELP"
+        jump store
 
 label securityRoomEnter:
     scene secRoom
     show screen secroom
     #hide flay_smug
     show flay_smug at left
+    " "
+    jump securityRoomEnter
+
+label securityRoomEnter2:
+    scene secRoom
+    show screen secroom
+    #hide flay_smug
+    show flay_neutral at left
     " "
     jump securityRoomEnter
 
