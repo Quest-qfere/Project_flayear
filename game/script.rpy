@@ -268,7 +268,7 @@ label start:
     show charli_excited at charmidright
     with fastdissolve
     CHARLI "Now, time to party!"
-    scene black with fae
+    scene black with fade
     hide window
     pause 5.0
     window show

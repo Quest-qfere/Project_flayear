@@ -50,3 +50,21 @@ Load screen analysis took 0.02s
 Analyze screens took 0.00s
 Prepare screens took 0.00s
 Running _start took 0.00s
+
+Full traceback:
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\main.py", line 649, in main
+    renpy.persistent.update(True)
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\persistent.py", line 434, in update
+    save()
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\persistent.py", line 455, in save
+    renpy.loadsave.location.save_persistent(compressed)
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\savelocation.py", line 566, in save_persistent
+    l.save_persistent(data)
+  File "C:\Users\vikr4\OneDrive\Desktop\palulu\renpy-8.2.1-sdk\renpy\savelocation.py", line 374, in save_persistent
+    with open(fn_tmp, "wb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\vikr4\\OneDrive\\Desktop\\palulu\\Project_flayear\\game\\saves\\persistent.1720903176.tmp'
+
+While running game code:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\vikr4\\OneDrive\\Desktop\\palulu\\Project_flayear\\game\\saves\\persistent.1720903176.tmp'
