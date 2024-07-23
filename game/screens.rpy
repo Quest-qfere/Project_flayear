@@ -186,13 +186,12 @@ screen music_room:
         null height 20
 
         # The button that lets the user exit the music room.
-        textbutton "Main Menu" action ShowMenu("main_menu")
-
+        textbutton "Main Menu" action [ShowMenu("main_menu"),Stop("music")]
     # Start the music playing on entry to the music room.
-    on "replace" action mr.Play()
+    on "replace" action Stop("music")
 
     # Restore the main menu music upon leaving.
-    on "replaced" action Play("music","music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
+    on "Main Menu" action Stop("music")
 screen gallery:
 
     # Ensure this replaces the main menu.

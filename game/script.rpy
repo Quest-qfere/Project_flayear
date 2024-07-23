@@ -4,9 +4,9 @@
 # name of the character.
 # We can change the size and the codename in the future by changing the values in size
 # if you wanna change the height of the name box just change the variable define gui.name_ypos = -100 in the gui file
-define config.tag_layer = {'bg':'background'}
+
 init:
-    image bg general_area="images/trnsptoutsideclues.png"
+    image bg general_area="images/general_area.png"
     image bg navigation_room="images/navigation_room.png"
     image flay_neutral="images/Neutral_Flayon.png"
     image navi="images/navi.png"
@@ -39,6 +39,7 @@ define KIT = Character("Kit", who_suffix="\n{size=-15}Code name"  )
 transform  big_size:
         zoom 2.0
 label start:
+    stop music
     # These display lines of diaslogue.
     "This is  a super scuffed demo of the scene without the minigame(I'll try to learn how to do that)"
     play sound "sfx/door-bang-1wav-14449.mp3"
