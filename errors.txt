@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 169: end of line expected.
-    with fade nointeract
-              ^
-
-File "game/script.rpy", line 172: end of line expected.
-    with fade nointeract
-              ^
+File "game/script.rpy", line 218: expected 'image_name_component' not found.
+    hide with fastdissolve
+        ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sat Jul 13 15:33:43 2024
+Sun Aug 11 19:18:18 2024
