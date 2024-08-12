@@ -59,10 +59,14 @@ init:
     image kit_crying_cropped = Crop((0, 0, 275, 250), "kit_crying")
     #navi
     image navi_neutral=im.Scale('images/navi/navi_neutral.png', 300, 400)
+    image navi_disgusted=im.Scale('images/navi/navi_disgusted.png', 300, 400)
+    image navi_worried=im.Scale('images/navi/navi_worried.png', 300, 400)
+    image navi_snacks=im.Scale('images/navi/navi_snacks.png', 300, 400)
     image navi_cake_neutral=im.Scale('images/navi/navi_cakeneutral.png', 300, 400)
     image navi_cake_annoyed=im.Scale('images/navi/navi_cakeannoyed.png', 300, 400)
     image navi_neutral_cropped = Crop((0, 0, 275, 250), "navi_neutral")
- 
+    image navi_worried_cropped = Crop((0, 0, 275, 250), "navi_worried")
+
     # props
     image note = "images/props/prologue_note_temp.png"
     image rtrus_screen=im.Scale("images/props/rtrus_screen.png", 300, 300)
@@ -71,6 +75,10 @@ init:
     image rtrus_screen_3 = "rtrus_screen"
     image rtrus_screen_4 = "rtrus_screen"
     image rtrus_screen_5 = "rtrus_screen"
+    image error_msg=im.Scale("images/props/error_msg.png", 200, 100)
+    image error_1 = "error_msg"
+    image error_2 = "error_msg"
+    image error_3 = "error_msg"
 
     #image image=im.Scale('images/char/mode.png', 300, 400)
     #image image=im.Scale('images/char/mode.png', 300, 400)
@@ -146,21 +154,21 @@ define fastdissolve = Dissolve(0.2)
 
 label start:
     # These display lines of dialogue.
-    #"My name is Machina X Flayon, the pilot of guild TEMPUS!" 
-    #"As a guild of brave, smart adventurers, we get commissioned for quests quite often."
-    #"But, today was {i}different...{/i} a quest came through, addressed to me specifically!"
-    #"I wouldn't usually find this strange, but the note attached was... interesting."
-    #hide window
-    #show note:
-    #    alpha 0.00
-    #    xalign 0.5
-    #    yalign 0.5
-    #    easein 1.0 alpha 1.00
-    #pause 1.0
-    #window show
-    #FLAY "So, I recruited five of the strongest people in my team, also known as the Machiroons!"
-    #FLAY "And we traveled in none other than my giant mech, the R-TRUS! He's pretty cool!"
-    #FLAY "We all got ready and set off towards the coordinates..."
+    "My name is Machina X Flayon, the pilot of guild TEMPUS!" 
+    "As a guild of brave, smart adventurers, we get commissioned for quests quite often."
+    "But, today was {i}different...{/i} a quest came through, addressed to me specifically!"
+    "I wouldn't usually find this strange, but the note attached was... interesting."
+    hide window
+    show note:
+        alpha 0.00
+        xalign 0.5
+        yalign 0.5
+        easein 1.0 alpha 1.00
+    pause 1.0
+    window show
+    FLAY "So, I recruited five of the strongest people in my team, also known as the Machiroons!"
+    FLAY "And we traveled in none other than my giant mech, the R-TRUS! He's pretty cool!"
+    FLAY "We all got ready and set off towards the coordinates..."
     show bg pilot_room with fade
     pause 1
     show flayon_neutral at charfarleft
@@ -226,11 +234,125 @@ label start:
     hide rtrus_screen_2
     hide rtrus_screen_3
     hide rtrus_screen_4
-    with fastdissolve
+    with dissolve
     scene bg gas_station_outside with fade
-
-    show flayon_surprised at charfarleft
-    show charli_excited at charfarright
-    FLAY "RAGEY"
+    pause 1.5
+    show flayon_concerned at charfarleft
+    show navi_disgusted at charfarright
+    with dissolve
+    NAVI "Eww... this place needs some major redecorating..."
+    FLAY "Yeah... let's just be quick, okay?"
+    hide navi_disgusted
+    hide flayon_concerned
     with fastdissolve
+    scene bg gas_station_inside with fade
+    pause 1.0
+    show flayon_neutral at charfarleft
+    with fastdissolve
+    FLAY "Huh, everything seems pretty old. And what's with this lighting?"
+    show navi_disgusted at charfarright
+    with fastdissolve
+    NAVI "Gross! Everything's dusty!"
+    NAVI "...oh... Look?"
+    FLAY "Hmm?"
+    hide navi_disgusted
+    show navi_neutral at charfarright
+    with fastdissolve
+    NAVI "Nobody is behind the register? Is... anyone here?"
+    hide flayon_neutral
+    show flayon_confused at charfarleft
+    with fastdissolve
+    FLAY "{i}Hm... they're right... that's strange. Why are the lights on if no one is working?{/i}"
+    FLAY "{i}Actually, there were no people outside either...{/i}"
+    hide navi_neutral
+    show navi_worried at charfarright
+    with fastdissolve
+    NAVI "Let's just grab some snacks and go. This place is seriously freaking me out."
+    hide flayon_confused
+    show flayon_neutral at charfarleft
+    with fastdissolve
+    FLAY "Alright, let's see here..."
+    hide flayon_neutral
+    hide navi_worried
+    jump show_interactive_items
+
+label show_interactive_items:
+    show screen gas_station_items
+    with fastdissolve
+    "Click on an item to interact with it."
+    pause
+
+screen gas_station_items():
+    imagebutton:
+        xpos 100
+        ypos 300
+        idle "images/props/snack1_idle.png"
+        hover "images/props/snack1_hover.png"
+        action Jump("snack_chosen")
+
+    imagebutton:
+        xpos 400
+        ypos 300
+        idle "images/props/snack2_idle.png"
+        hover "images/props/snack2_hover.png"
+        action Jump("snack_chosen")
+
+    imagebutton:
+        xpos 700
+        ypos 300
+        idle "images/props/door_idle.png"
+        hover "images/props/door_hover.png"
+        action Jump("door_chosen")
+
+label snack_chosen:
+    hide screen gas_station_items
+    with fastdissolve
+    show flayon_neutral at charfarleft
+    with fastdissolve
+    FLAY "OK, I'm ready! Let's go!"
+    show navi_snacks at charfarright
+    with fastdissolve
+    NAVI "Finally! Time to get back on track!"
+    hide flayon_neutral
+    hide navi_snacks
+    with fastdissolve
+    pause 1.0
+    jump offline
+
+label door_chosen:
+    hide screen gas_station_items
+    with fastdissolve
+    show flayon_surprised at charfarleft
+    with fastdissolve
+    FLAY "Looks like it's locked right now..."
+    hide flayon_surprised with fastdissolve
+    jump show_interactive_items
+
+label offline:
+    scene bg pilot_room with fade
+    show flayon_neutral at charfarleft
+    with fastdissolve
+    FLAY "Alright, time to take off!"
+    pause 2.0
+    show error_1 at rtrus_screen_topleft
+    show error_2 at rtrus_screen_bottommidleft
+    show error_3 at rtrus_screen_topright
+    show error_msg at rtrus_screen_bottommidright
+    with fastdissolve
+    pause 2.0
+    hide flayon_neutral
+    show flayon_surprised at charfarleft
+    with fastdissolve
+    FLAY "What?! RTRUS? What's going on?"
+    hide flayon_surprised
+    show flayon_confused at charfarleft
+    with fastdissolve
+    FLAY "Hello? Anyone there?"
+    pause 2.0
+    hide flayon_confused
+    show flayon_concerned at charfarleft
+    with fastdissolve
+    FLAY "Machiroons, if you can hear this, meet me outside ASAP!"
+    hide flayon_concerned with fastdissolve
+    pause 0.5
     return

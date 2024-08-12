@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 218: expected 'image_name_component' not found.
-    hide with fastdissolve
-        ^
+The label show_interactive_items is defined twice, at File "game/script.rpy", line 279:
+label show_interactive_items:
+and File "game/script.rpy", line 311:
+label show_interactive_items:
+
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sun Aug 11 19:18:18 2024
+Sun Aug 11 20:07:20 2024
