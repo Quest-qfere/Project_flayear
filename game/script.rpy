@@ -5,25 +5,94 @@
 # We can change the size and the codename in the future by changing the values in size
 # if you wanna change the height of the name box just change the variable define gui.name_ypos = -100 in the gui file
 init:
+    image bg general_area="images/general_area.PNG"
+    image bg navigation_room="images/navigation_room.png"
+    image flay_neutral:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flay_smug:
+        "images/Sprites_Flaypng"
+        fit "cover"
+        xsize 700
+    image flay_unamused:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flayon_neutral_deadpan:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flay_thinking:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flayon_annoyed_deadpan:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flayon_glare_annoyed:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flayon_smirk:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flayon_excited:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flayon_confused:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image flay_stunned:
+        "images/Sprites_Flay.png"
+        fit "cover"
+        xsize 700
+    image navi:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_annoyed:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_smug:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_confused:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_annoyed_borred:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_thinking:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_smirk_eye_roll:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_sigh_annoyed:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700
+    image navi_eyeroll:
+        "images/Sprites_Navi.png"
+        fit "cover"
+        xsize 700        
+    image error_screen:
+        "images/error_screen.png"
+        
     image bg general_area="images/general_area.png"
     image bg navigation_room="images/navigation_room.png"
-    image flay_neutral="images/Neutral_Flayon.png"
-    image navi="images/navi.png"
-    image navi_annoyed="images/Navi_annoyed.png"
-    image flay_unamused="images/Flayon_unamused.png"
-    image navi_smug="images/Navi_smug.png"
-    image navi_confused="images/Navi_neutral_confused.png"
-    image flayon_neutral_deadpan="images/Flayon_neutral_deadpan.jpg"
-    image navi_annoyed_borred= "images/Navi_borred_annoyed.png"
-    image flayon_annoyed_deadpan="images/Flayon_neutral_deadpan.jpg"
-    image navi_thinking="images/Navi_thinking.png"
-    image flayon_glare_annoyed="images/Flayon_glare_annoyed.jpg"
-    image navi_smirk_eye_roll="images/Navi_smug.png"
-    image navi_sigh_annoyed="images/Navi_sigh_annoyed.png"
-    image navi_eyeroll="images/Navi_eyeroll.png"
-    image flayon_smirk="images/Flayon_smirk.jpg"
-    image flayon_confused="images/Flayon_glare_annoyed.jpg"
-    image flayon_surprised="images/Flayon_neutral_deadpan.jpg"
+
 
 define FLAY = Character("Flayon", who_suffix="\n{size=-15}Ace Pilot",what_slow_cps=25  )
 
