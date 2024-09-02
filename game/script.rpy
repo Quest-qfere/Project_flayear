@@ -16,56 +16,56 @@ init:
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
     #flayon
     image flayon_neutral=im.Scale('images/flayon/flayon_neutral.png', 683, 683)
-    image flayon_confused=im.Scale('images/flayon/flayon_confused.png', 300, 400)
-    image flayon_excited=im.Scale('images/flayon/flayon_excited.png', 300, 400)
-    image flayon_surprised=im.Scale('images/flayon/flayon_surprised.png', 300, 400)
-    image flayon_concerned=im.Scale('images/flayon/flayon_concerned.png', 300, 400)
+    image flayon_confused=im.Scale('images/flayon/flayon_confused.png', 683, 683)
+    image flayon_excited=im.Scale('images/flayon/flayon_excited.png', 683, 683)
+    image flayon_surprised=im.Scale('images/flayon/flayon_surprised.png', 683, 683)
+    image flayon_concerned=im.Scale('images/flayon/flayon_concerned.png', 683, 683)
     image flayon_neutral_cropped = Crop((0, 0, 275, 250), "flayon_neutral")
     image flayon_concerned_cropped = Crop((0, 0, 275, 250), "flayon_concerned")
     image flayon_confused_cropped = Crop((0, 0, 275, 250), "flayon_confused")
     image flayon_excited_cropped = Crop((0, 0, 275, 250), "flayon_excited")
     image flayon_surprised_cropped = Crop((0, 0, 275, 250), "flayon_surprised")
     #cain
-    image cain_neutral=im.Scale('images/cain/cain_neutral.png', 300, 400)
-    image cain_excited=im.Scale('images/cain/cain_excited.png', 300, 400)
-    image cain_flex=im.Scale('images/cain/cain_flex.png', 300, 400)
-    image cain_neutral_cropped = Crop((0, 0, 275, 250), "cain_neutral")
-    image cain_excited_cropped = Crop((0, 0, 275, 250), "cain_excited")
-    image cain_flex_cropped = Crop((0, 0, 275, 250), "cain_flex")
+    image cain_neutral=im.Scale('images/cain/cain_neutral.png', 683, 683)
+    image cain_excited=im.Scale('images/cain/cain_excited.png', 683, 683)
+    image cain_flex=im.Scale('images/cain/cain_flex.png', 683, 683)
+    image cain_neutral_cropped = Crop((30, 0, 275, 250), im.Scale('images/cain/cain_neutral.png', 410, 410))
+    image cain_excited_cropped = Crop((30, 0, 275, 250), im.Scale('images/cain/cain_excited.png', 410, 410))
+    image cain_flex_cropped = Crop((30, 0, 275, 250), im.Scale('images/cain/cain_flex.png', 410, 410))
     #charli
-    image charli_neutral=im.Scale('images/charli/charli_neutral.png', 410, 410)
-    image charli_excited=im.Scale('images/charli/charli_excited.png', 300, 400)
-    image charli_neutral_cropped = Crop((0, 0, 275, 250), "charli_neutral")
-    image charli_excited_cropped = Crop((0, 0, 275, 250), "charli_excited")
+    image charli_neutral=im.Scale('images/charli/charli_neutral.png', 683, 683)
+    image charli_excited=im.Scale('images/charli/charli_excited.png', 683, 683)
+    image charli_neutral_cropped = Crop((30, 0, 275, 250), im.Scale('images/charli/charli_neutral.png', 410, 410))
+    image charli_excited_cropped = Crop((30, 0, 275, 250), im.Scale('images/charli/charli_excited.png', 410, 410))
     #dean
-    image dean_neutral=im.Scale('images/dean/dean_neutral.png', 300, 400)
-    image dean_smug=im.Scale('images/dean/dean_smug.png', 300, 400)
-    image dean_concern=im.Scale('images/dean/dean_concern.png', 300, 400)
-    image dean_facepalm=im.Scale('images/dean/dean_facepalm.png', 300, 400)
-    image dean_neutral_cropped = Crop((0, 0, 275, 250), "dean_neutral")
-    image dean_smug_cropped = Crop((0, 0, 275, 250), "dean_smug")
-    image dean_concern_cropped = Crop((0, 0, 275, 250), "dean_concern")
-    image dean_facepalm_cropped=Crop((0, 0, 275, 250), "dean_facepalm")
+    image dean_neutral=im.Scale('images/dean/dean_neutral.png', 683, 683)
+    image dean_smug=im.Scale('images/dean/dean_smug.png', 683, 683)
+    image dean_concern=im.Scale('images/dean/dean_concern.png', 683, 683)
+    image dean_facepalm=im.Scale('images/dean/dean_facepalm.png', 683, 683)
+    image dean_neutral_cropped = Crop((30, 0, 275, 250), im.Scale('images/dean/dean_neutral.png', 410, 410))
+    image dean_smug_cropped = Crop((30, 0, 275, 250), im.Scale('images/dean/dean_smug.png', 410, 410))
+    image dean_concern_cropped = Crop((30, 0, 275, 250), im.Scale('images/dean/dean_concern.png', 410, 410))
+    image dean_facepalm_cropped= Crop((30, 0, 275, 250), im.Scale('images/dean/dean_facepalm.png', 410, 410))
     #kit
-    image kit_neutral=im.Scale('images/kit/kit_neutral.png', 300, 400)
-    image kit_excited=im.Scale('images/kit/kit_excited.png', 300, 400)
-    image kit_starryeyed=im.Scale('images/kit/kit_starryeyed.png', 300, 400)
-    image kit_concerned=im.Scale('images/kit/kit_concerned.png', 300, 400)
-    image kit_crying=im.Scale('images/kit/kit_crying.png', 300, 400)
-    image kit_neutral_cropped = Crop((0, 0, 275, 250), "kit_neutral")
-    image kit_excited_cropped = Crop((0, 0, 275, 250), "kit_excited")
-    image kit_starryeyed_cropped = Crop((0, 0, 275, 250), "kit_starryeyed")
-    image kit_concerned_cropped = Crop((0, 0, 275, 250), "kit_concerned")
-    image kit_crying_cropped = Crop((0, 0, 275, 250), "kit_crying")
+    image kit_neutral=im.Scale('images/kit/kit_neutral.png', 683, 683)
+    image kit_excited=im.Scale('images/kit/kit_excited.png', 683, 683)
+    image kit_starryeyed=im.Scale('images/kit/kit_starryeyed.png', 683, 683)
+    image kit_concerned=im.Scale('images/kit/kit_concerned.png', 683, 683)
+    image kit_crying=im.Scale('images/kit/kit_crying.png', 683, 683)
+    image kit_neutral_cropped = Crop((30, 0, 275, 250), im.Scale('images/kit/kit_neutral.png', 410, 410))
+    image kit_excited_cropped = Crop((30, 0, 275, 250), im.Scale('images/kit/kit_excited.png', 410, 410))
+    image kit_starryeyed_cropped = Crop((30, 0, 275, 250), im.Scale('images/kit/kit_starryeyed.png', 410, 410))
+    image kit_concerned_cropped = Crop((30, 0, 275, 250), im.Scale('images/kit/kit_concerned.png', 410, 410))
+    image kit_crying_cropped = Crop((30, 0, 275, 250), im.Scale('images/kit/kit_crying.png', 410, 410))
     #navi
-    image navi_neutral=im.Scale('images/navi/navi_neutral.png', 300, 400)
-    image navi_disgusted=im.Scale('images/navi/navi_disgusted.png', 300, 400)
-    image navi_worried=im.Scale('images/navi/navi_worried.png', 300, 400)
-    image navi_snacks=im.Scale('images/navi/navi_snacks.png', 300, 400)
-    image navi_cake_neutral=im.Scale('images/navi/navi_cakeneutral.png', 300, 400)
-    image navi_cake_annoyed=im.Scale('images/navi/navi_cakeannoyed.png', 300, 400)
-    image navi_neutral_cropped = Crop((0, 0, 275, 250), "navi_neutral")
-    image navi_worried_cropped = Crop((0, 0, 275, 250), "navi_worried")
+    image navi_neutral=im.Scale('images/navi/navi_neutral.png', 683, 683)
+    image navi_disgusted=im.Scale('images/navi/navi_disgusted.png', 683, 683)
+    image navi_worried=im.Scale('images/navi/navi_worried.png', 683, 683)
+    image navi_snacks=im.Scale('images/navi/navi_snacks.png', 683, 683)
+    image navi_cake_neutral=im.Scale('images/navi/navi_cakeneutral.png', 683, 683)
+    image navi_cake_annoyed=im.Scale('images/navi/navi_cakeannoyed.png', 683, 683)
+    image navi_neutral_cropped = Crop((30, 0, 275, 250), im.Scale('images/navi/navi_neutral.png', 410, 410))
+    image navi_worried_cropped = Crop((30, 0, 275, 250), im.Scale('images/navi/navi_worried.png', 410, 410))
 
     # props
     image note = "images/props/act_1/prologue_note_temp.png"
@@ -80,16 +80,16 @@ init:
     image error_2 = "error_msg"
     image error_3 = "error_msg"
 
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
-    #image image=im.Scale('images/char/mode.png', 300, 400)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
+    #image image=im.Scale('images/char/mode.png', 683, 683)
 
 define FLAY = Character("Flayon", who_suffix="\n{size=-15}Ace Pilot"  )
 define NAVI  = Character("Navi", who_suffix="\n{size=-15}Navigator"  )
@@ -99,32 +99,32 @@ define KIT = Character("Kit", who_suffix="\n{size=-15}Weapons"  )
 define CHARLI = Character("Charli", who_suffix="\n{size=-15}Mechanic"  )
 
 transform charfarleft:
-    xalign 0.07
+    xalign 0.04
     yalign 1.0
 
 transform charfarright:
     xalign 0.95
-    yalign 0.6
+    yalign 1.0
 
 transform charright:
     xalign 0.80
-    yalign 0.6
+    yalign 1.0
 
 transform charmidright:
     xalign 0.65
-    yalign 0.6
+    yalign 1.0
 
 transform charmid:
     xalign 0.50
-    yalign 0.6
+    yalign 1.0
 
 transform charmidleft:
     xalign 0.35
-    yalign 0.6
+    yalign 1.0
 
 transform charleft:
     xalign 0.20
-    yalign 0.6
+    yalign 1.0
 
 transform rtrus_screen_topleft:
     xalign 0.35
