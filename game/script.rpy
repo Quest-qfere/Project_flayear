@@ -68,14 +68,14 @@ init:
     image navi_worried_cropped = Crop((0, 0, 275, 250), "navi_worried")
 
     # props
-    image note = "images/props/prologue_note_temp.png"
-    image rtrus_screen=im.Scale("images/props/rtrus_screen.png", 300, 300)
+    image note = "images/props/act_1/prologue_note_temp.png"
+    image rtrus_screen=im.Scale("images/props/act_1/rtrus_screen.png", 300, 300)
     image rtrus_screen_1 = "rtrus_screen"
     image rtrus_screen_2 = "rtrus_screen"
     image rtrus_screen_3 = "rtrus_screen"
     image rtrus_screen_4 = "rtrus_screen"
     image rtrus_screen_5 = "rtrus_screen"
-    image error_msg=im.Scale("images/props/error_msg.png", 200, 100)
+    image error_msg=im.Scale("images/props/act_1/error_msg.png", 200, 100)
     image error_1 = "error_msg"
     image error_2 = "error_msg"
     image error_3 = "error_msg"
@@ -139,7 +139,7 @@ transform rtrus_screen_topmid:
     yalign 0.17
 
 transform rtrus_screen_bottommidright:
-    xalign 0.47
+    xalign 0.83
     yalign 0.59
 
 transform rtrus_screen_topright:
@@ -164,22 +164,22 @@ screen gas_station_items():
     imagebutton:
         xpos 100
         ypos 300
-        idle "images/props/snack1_idle.png"
-        hover "images/props/snack1_hover.png"
+        idle "images/props/act_1/snack1_idle.png"
+        hover "images/props/act_1/snack1_hover.png"
         action Jump("snack_chosen")
 
     imagebutton:
         xpos 400
         ypos 300
-        idle "images/props/snack2_idle.png"
-        hover "images/props/snack2_hover.png"
+        idle "images/props/act_1/snack2_idle.png"
+        hover "images/props/act_1/snack2_hover.png"
         action Jump("snack_chosen")
 
     imagebutton:
         xpos 700
         ypos 300
-        idle "images/props/door_idle.png"
-        hover "images/props/door_hover.png"
+        idle "images/props/act_1/door_idle.png"
+        hover "images/props/act_1/door_hover.png"
         action Jump("door_chosen")
 
 label intro_sequence:
