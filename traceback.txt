@@ -1,21 +1,29 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Scale object at 0x0000000005267d00>:
-  File "game/script.rpy", line 225, in script
-    scene bg gas_station_outside with fade
-OSError: Couldn't find file 'images/bg/bg_gas_station_outside'.
+While loading <renpy.display.im.Image object ('images/prologue_note_temp.png') at 0x00000000052f9b20>:
+  File "game/script.rpy", line 198, in script
+    pause 1.0
+  File "renpy/common/000statements.rpy", line 460, in execute_pause
+    renpy.pause(delay)
+OSError: Couldn't find file 'images/prologue_note_temp.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 225, in script
-    scene bg gas_station_outside with fade
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 1363, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\exports.py", line 1781, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 1548, in do_with
-    return self.interact(trans_pause=True,
+  File "game/script.rpy", line 198, in script
+    pause 1.0
+  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
+    self.call("execute")
+  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 460, in execute_pause
+    renpy.pause(delay)
+  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\exports.py", line 1661, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward, pause=delay, pause_modal=modal)
+  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 2165, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\core.py", line 2818, in interact_core
@@ -26,14 +34,6 @@ Full traceback:
   File "render.pyx", line 260, in renpy.display.render.render
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
     surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\transition.py", line 194, in render
-    renpy.display.render.render(self.transitions[-1], width, height, 0, 0)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\transition.py", line 384, in render
-    top = render(self.new_widget, width, height, st, at)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 260, in renpy.display.render.render
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\layout.py", line 900, in render
@@ -59,19 +59,15 @@ Full traceback:
     return cache.get(self, render=True)
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\im.py", line 309, in get
     surf = image.load()
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\im.py", line 936, in load
-    child = cache.get(self.image)
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\im.py", line 309, in get
-    surf = image.load()
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\im.py", line 761, in load
     raise e
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\im.py", line 711, in load
     filelike = renpy.loader.load(self.filename, directory="images")
   File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\loader.py", line 672, in load
     raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'images/bg/bg_gas_station_outside'.
+OSError: Couldn't find file 'images/prologue_note_temp.png'.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.2.1.24030407
 ProjectFlayear 1.0
-Sun Aug 11 19:20:37 2024
+Mon Sep  2 18:03:53 2024

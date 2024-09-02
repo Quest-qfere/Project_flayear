@@ -15,7 +15,7 @@ init:
     image bg gas_station_inside=im.Scale('images/bg/bg_gas_station_inside.png', 1920, 1200)
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
     #flayon
-    image flayon_neutral=im.Scale('images/flayon/flayon_neutral.png', 300, 400)
+    image flayon_neutral=im.Scale('images/flayon/flayon_neutral.png', 683, 683)
     image flayon_confused=im.Scale('images/flayon/flayon_confused.png', 300, 400)
     image flayon_excited=im.Scale('images/flayon/flayon_excited.png', 300, 400)
     image flayon_surprised=im.Scale('images/flayon/flayon_surprised.png', 300, 400)
@@ -33,7 +33,7 @@ init:
     image cain_excited_cropped = Crop((0, 0, 275, 250), "cain_excited")
     image cain_flex_cropped = Crop((0, 0, 275, 250), "cain_flex")
     #charli
-    image charli_neutral=im.Scale('images/charli/charli_neutral.png', 300, 400)
+    image charli_neutral=im.Scale('images/charli/charli_neutral.png', 410, 410)
     image charli_excited=im.Scale('images/charli/charli_excited.png', 300, 400)
     image charli_neutral_cropped = Crop((0, 0, 275, 250), "charli_neutral")
     image charli_excited_cropped = Crop((0, 0, 275, 250), "charli_excited")
@@ -98,11 +98,9 @@ define DEAN = Character("Dean", who_suffix="\n{size=-15}Medic"  )
 define KIT = Character("Kit", who_suffix="\n{size=-15}Weapons"  )
 define CHARLI = Character("Charli", who_suffix="\n{size=-15}Mechanic"  )
 
-image note = "images/prologue_note_temp.png"
-
 transform charfarleft:
-    xalign 0.10
-    yalign 0.6
+    xalign 0.07
+    yalign 1.0
 
 transform charfarright:
     xalign 0.95
@@ -133,16 +131,16 @@ transform rtrus_screen_topleft:
     yalign 0.17
 
 transform rtrus_screen_bottommidleft:
-    xalign 0.50
-    yalign 0.57
+    xalign 0.47
+    yalign 0.59
 
 transform rtrus_screen_topmid:
     xalign 0.65
     yalign 0.17
 
 transform rtrus_screen_bottommidright:
-    xalign 0.80
-    yalign 0.57
+    xalign 0.47
+    yalign 0.59
 
 transform rtrus_screen_topright:
     xalign 0.95
@@ -154,6 +152,37 @@ define fastdissolve = Dissolve(0.2)
 
 label start:
     # These display lines of dialogue.
+    jump intro_sequence
+
+label show_interactive_items:
+    show screen gas_station_items
+    with fastdissolve
+    "Click on an item to interact with it."
+    pause
+
+screen gas_station_items():
+    imagebutton:
+        xpos 100
+        ypos 300
+        idle "images/props/snack1_idle.png"
+        hover "images/props/snack1_hover.png"
+        action Jump("snack_chosen")
+
+    imagebutton:
+        xpos 400
+        ypos 300
+        idle "images/props/snack2_idle.png"
+        hover "images/props/snack2_hover.png"
+        action Jump("snack_chosen")
+
+    imagebutton:
+        xpos 700
+        ypos 300
+        idle "images/props/door_idle.png"
+        hover "images/props/door_hover.png"
+        action Jump("door_chosen")
+
+label intro_sequence:
     "My name is Machina X Flayon, the pilot of guild TEMPUS!" 
     "As a guild of brave, smart adventurers, we get commissioned for quests quite often."
     "But, today was {i}different...{/i} a quest came through, addressed to me specifically!"
@@ -275,34 +304,6 @@ label start:
     hide flayon_neutral
     hide navi_worried
     jump show_interactive_items
-
-label show_interactive_items:
-    show screen gas_station_items
-    with fastdissolve
-    "Click on an item to interact with it."
-    pause
-
-screen gas_station_items():
-    imagebutton:
-        xpos 100
-        ypos 300
-        idle "images/props/snack1_idle.png"
-        hover "images/props/snack1_hover.png"
-        action Jump("snack_chosen")
-
-    imagebutton:
-        xpos 400
-        ypos 300
-        idle "images/props/snack2_idle.png"
-        hover "images/props/snack2_hover.png"
-        action Jump("snack_chosen")
-
-    imagebutton:
-        xpos 700
-        ypos 300
-        idle "images/props/door_idle.png"
-        hover "images/props/door_hover.png"
-        action Jump("door_chosen")
 
 label snack_chosen:
     hide screen gas_station_items
