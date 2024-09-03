@@ -14,12 +14,15 @@ init:
     image bg navi_cake=im.Scale('images/navi/navi_cakeneutral.png', 1920, 1200)
     image bg gas_station_inside=im.Scale('images/bg/bg_gas_station_inside.png', 1920, 1200)
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
+    image bg rtrusExit = "images/RTrus_exit.png"
     #flayon
     image flayon_neutral=im.Scale('images/flayon/flayon_neutral.png', 683, 683)
     image flayon_confused=im.Scale('images/flayon/flayon_confused.png', 683, 683)
     image flayon_excited=im.Scale('images/flayon/flayon_excited.png', 683, 683)
     image flayon_surprised=im.Scale('images/flayon/flayon_surprised.png', 683, 683)
     image flayon_concerned=im.Scale('images/flayon/flayon_concerned.png', 683, 683)
+    image flayon_concentrating=im.Scale('images/flayon/flayon_concentrating.png', 683, 683)
+    image flayon_smug=im.Scale('images/flayon/flayon_smug.png', 683, 683)
     image flayon_neutral_cropped = Crop((0, 0, 275, 250), "flayon_neutral")
     image flayon_concerned_cropped = Crop((0, 0, 275, 250), "flayon_concerned")
     image flayon_confused_cropped = Crop((0, 0, 275, 250), "flayon_confused")
@@ -29,6 +32,7 @@ init:
     image cain_neutral=im.Scale('images/cain/cain_neutral.png', 683, 683)
     image cain_excited=im.Scale('images/cain/cain_excited.png', 683, 683)
     image cain_flex=im.Scale('images/cain/cain_flex.png', 683, 683)
+    image cain_worried=im.Scale('images/cain/cain_worried.png', 683, 683)
     image cain_neutral_cropped = Crop((30, 0, 275, 250), im.Scale('images/cain/cain_neutral.png', 410, 410))
     image cain_excited_cropped = Crop((30, 0, 275, 250), im.Scale('images/cain/cain_excited.png', 410, 410))
     image cain_flex_cropped = Crop((30, 0, 275, 250), im.Scale('images/cain/cain_flex.png', 410, 410))
@@ -80,6 +84,26 @@ init:
     image error_2 = "error_msg"
     image error_3 = "error_msg"
 
+    # cg
+    image cg1 = "images/cg/cg1.png"
+    image cg2 = "images/cg/cg2.png"
+    image transition:
+        "cg1"                       
+        2.9                          
+        "cg2" with dissolve       
+        2.7
+        "#000000" with fade
+        1.2
+
+    # game state
+    default Inventory = inv()
+    default cloth_taken = False
+    default cam = False
+    default paper_taken = False
+    default box = False
+    default seenComp = False
+
+      
     #image image=im.Scale('images/char/mode.png', 683, 683)
     #image image=im.Scale('images/char/mode.png', 683, 683)
     #image image=im.Scale('images/char/mode.png', 683, 683)
@@ -99,31 +123,31 @@ define KIT = Character("Kit", who_suffix="\n{size=-15}Weapons"  )
 define CHARLI = Character("Charli", who_suffix="\n{size=-15}Mechanic"  )
 
 transform charfarleft:
-    xalign 0.04
+    xcenter 0.1
     yalign 1.0
 
 transform charfarright:
-    xalign 0.95
+    xcenter 0.9
     yalign 1.0
 
 transform charright:
-    xalign 0.80
+    xcenter 0.75
     yalign 1.0
 
 transform charmidright:
-    xalign 0.65
+    xcenter 0.6
     yalign 1.0
 
 transform charmid:
-    xalign 0.50
+    xcenter 0.45
     yalign 1.0
 
 transform charmidleft:
-    xalign 0.35
+    xcenter 0.3
     yalign 1.0
 
 transform charleft:
-    xalign 0.20
+    xcenter 0.15
     yalign 1.0
 
 transform rtrus_screen_topleft:
@@ -356,4 +380,304 @@ label offline:
     FLAY "Machiroons, if you can hear this, meet me outside ASAP!"
     hide flayon_concerned with fastdissolve
     pause 0.5
-    return
+    jump act2_start
+
+label act2_start:
+    python:
+        Inventory = inv()
+        cloth_taken = False
+        cam = False
+        paper_taken = False
+        box = False
+        seenComp = False
+    scene bg rtrusExit with fade
+    show flayon_neutral at charfarleft
+    show dean_concern at charmid
+    show kit_concerned at charmidright
+    show navi_worried at charright
+    show cain_neutral at charfarright
+    show screen inventory_button
+    DEAN "Weird… I swear I saw Charli just before you two left?"
+    NAVI "Yeah, and I didn't hear anyone else leave?"
+    KIT "Where are they? Did they receive your message, Flayon?"
+    hide dean_concern
+    hide kit_concerned
+    hide navi_worried
+    hide cain_neutral
+    with fastdissolve 
+    queue sound "sfx/quick-mechanical-keyboard-14391.mp3"
+    show screen phone
+    with fastdissolve
+    FLAY "..."
+    hide flayon_neutral
+    show flayon_confused at charfarleft
+    with fastdissolve
+    FLAY "This doesn't look good."
+    hide screen phone
+    show dean_concern at charmid
+    show kit_concerned at charmidright
+    show navi_worried at charright
+    show cain_neutral at charfarright
+    CAIN "How about you have a look around Flay? We can stay back and work on trying to repair the R-TRUS, yeah?"
+    menu:
+        "Ok! Sounds like a plan.":
+            CAIN "Let us know if you need any help!"
+            hide cain_neutral
+            show cain_flex at charfarright
+            with fastdissolve
+        "Hey… are you sure none of you heard anything weird?":
+            KIT "Nope!"
+            hide kit_concerned
+            show kit_neutral at charmidright
+            with fastdissolve
+            DEAN "Nothing at all."
+            hide dean_concern
+            show dean_neutral at charmid
+            with fastdissolve
+            FLAY "Got it..."
+            hide flayon_confused
+            show flayon_concerned
+            with fastdissolve
+    jump act2_scene2
+
+label act2_scene2:
+    hide kit_neutral
+    hide dean_neutral
+    hide cain_neutral
+    hide navi_worried
+    hide cain_flex
+    hide kit_worried
+    hide dean_worried
+    hide flayon_confused
+    with fastdissolve
+    FLAY "Hmm, maybe I should check outside first?"
+    hide flayon_concerned at charfarleft
+    show flayon_neutral at charfarleft 
+    with fastdissolve
+    jump looks
+
+label foots:
+    FLAY "They look like they are heading towards the gas station. But, these aren't my footprints. Does Navi wear shoes like this?"
+    hide screen closeprints
+    jump looks
+
+label cloths:
+    FLAY "Oh?"
+    hide flayon_neutral at charfarleft
+    show flayon_surprised at charfarleft
+
+menu:
+    "I remember someone wearing orange…":
+        FLAY "Wasn't Charli wearing Orange?!"
+        FLAY "I should take this… this might be important evidence!"
+        "Orange Cloth added to Inventory"
+        $cloth_taken = True
+        
+        default c = item("Orange Cloth","gui/item_placeholder.png", "gui/item_placeholder_hover.png")
+        $Inventory.add(c )
+        hide screen closecloth
+        jump lookrshock
+
+    "I don't think this belongs to any of us?":
+        FLAY "Weird, I don't remember seeing anyone else around here?"
+        hide flayon_surprised at charfarleft
+        show flayon_neutral at charfarleft
+        FLAY "Who could this belong to!"
+        hide screen closecloth
+        jump looks
+
+
+
+label lookrshock:
+    hide flayon_surprised at charfarleft
+    show flayon_neutral at charfarleft
+    jump looks 
+
+label wires:
+    queue sound "sfx/sliding-door-6758.mp3"
+    FLAY "!?!?!?"
+    hide flayon_neutral at charfarleft
+    show flayon_surprised at charfarleft
+    FLAY "This has clearly been tampered with!"
+    FLAY "Listen, If you're gonna tamper with someone's mech, at least hide it better!"
+    hide flayon_surprised at charfarleft
+    show flayon_neutral at charfarleft
+    hide screen closewires
+    jump looks
+
+label enterlooks:
+    scene rtrusExit
+    show flayon_neutral at charfarleft
+    jump looks
+
+label looks:
+
+    if (cloth_taken):
+        jump looks2
+
+    show screen lookaround
+    FLAY "  "
+    jump looks
+
+label looks2:
+    show screen lookaroundnocloth
+    FLAY "  "
+    jump looks2
+
+label gasenter:
+    scene gasExit
+    show flayon_neutral at charfarleft
+    jump gaslooks
+
+
+label gaslooks:
+    if (paper_taken):
+        show screen gaslooks2
+        FLAY "  "
+        jump gaslooks
+    show screen gaslooks
+    FLAY "  "
+    jump gaslooks 
+
+
+label prints2:
+    hide flayon_neutral
+    show flayon_confused at charfarleft
+    FLAY "Oh? These look the same?"
+    FLAY "But these are... going away from the front doors?"
+    FLAY "...?"
+    hide flayon_confused
+    show flayon_neutral at charfarleft
+    hide screen closeprints2
+    jump  gaslooks
+
+label cam:
+    FLAY "Oh! They have security cameras!"
+    FLAY "I wonder if I can access the footage somehow?"
+    $cam = True
+    hide screen closecam
+    jump gaslooks
+
+label paper:
+    FLAY "...hm!"
+    queue sound "sfx/door-bang-1wav-14449.mp3"
+    hide flayon_neutral
+    show flayon_confused at charfarleft
+    FLAY "Should I keep this...?"
+menu:
+    "Keep the note":
+        "Crumpled Note added to Inventory"
+        $paper_taken = True   
+        default p = item("Crumpled Note","gui/item_placeholder.png", "gui/item_placeholder_hover.png" )
+        $Inventory.add(p)
+        hide screen closepaper
+        hide flayon_confused
+        show flayon_neutral at charfarleft
+        jump gaslooks
+    "Discard the note":
+        hide screen closepaper
+        hide flayon_confused
+        show flayon_neutral at charfarleft
+        jump gaslooks
+
+label gasstationenter:
+    scene store
+    show flayon_neutral at charfarleft
+    show screen storelooks
+
+label store:
+    show screen storelooks
+    FLAY "  "
+    jump store 
+
+
+label fridge:
+    FLAY "This isn't the time for snacks…"
+    hide screen fridges
+    jump store
+
+label box:
+    if (box):
+        hide screen box
+        jump placeitem
+
+    $box = True
+    if (paper_taken):
+        hide flayon_neutral
+        show flayon_confused at charfarleft
+        FLAY "Hm? This box seems familiar"
+        hide flayon_confused
+        show flayon_neutral at charfarleft
+        hide screen box
+        jump placeitem
+    else:
+        FLAY "A box."
+        FLAY "An empty box."
+        hide screen box
+        jump placeitem
+
+label placeitem:
+    hide flayon_neutral
+    if (Inventory.amount != 0):
+        "Store An Item?"
+        menu:
+            "Yes":
+                call screen storing
+                $stored = _return
+                $Inventory.remove(stored)
+            "No":
+                show flayon_neutral at charfarleft
+                jump store       
+         
+    show flayon_neutral at charfarleft
+    if (Inventory.amount == 0):
+        FLAY "There is nothing to put in the box"
+    
+    jump store
+
+
+label securityRoom:
+    if (cam and not seenComp):
+        hide flayon_neutral
+        show flayon_excited at charfarleft
+        FLAY "Oh! Maybe I can find the footage from the cameras outside here?"
+        FLAY "Maybe my tail will work? Let me just…"
+
+        "HE PICKS THE LOCK (CG???)"
+        queue sound "sfx/door-bang-1wav-14449.mp3"
+        hide flayon_excited
+        show flayon_smug at charfarleft
+        FLAY "Heh, easy."
+        $seenComp = True
+        jump securityRoomEnter
+    if (cam and seenComp):
+        jump securityRoomEnter2
+    if (not cam):
+        "NO DIALOGUE, JUST SAYS SAME TEXT AS  EARLIER BUT WHAT IS SAID EARLIER IDK PLACEHOLDER HELP"
+        jump store
+
+label securityRoomEnter:
+    scene secRoom
+    show screen secroom
+    #hide flayon_smug
+    show flayon_smug at charfarleft
+    " "
+    jump securityRoomEnter
+
+label securityRoomEnter2:
+    scene secRoom
+    show screen secroom
+    #hide flayon_smug
+    show flayon_neutral at charfarleft
+    " "
+    jump securityRoomEnter
+
+label computer:
+    hide flayon_smug
+    show flayon_concentrating at charfarleft
+
+    FLAY "Let's see..."
+
+    show transition
+    $ renpy.pause(7.8, hard=True)
+    "END OF ACT"

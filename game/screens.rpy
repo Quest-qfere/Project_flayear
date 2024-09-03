@@ -1516,3 +1516,254 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+screen inventory_button:
+    textbutton "Inventory" action [ Show("Inven"),Hide("inventory_button")] align (0.95, 0.04)
+
+screen Inven:
+    add "gui/main_menu.png" xalign 1
+    hbox align (0.95, 0.04)  spacing 20:
+        textbutton "Close Inventory" action [Hide("Inven"), Show("inventory_button")]
+    if Inventory.amount == 0:
+        text "no items :c" at transform:
+            align (0.5, 0.1)
+    else:
+        hbox xfill False spacing 15 xalign 0.5:
+            for i in Inventory.items:
+                imagebutton:
+                    idle i.image 
+                    hover i.imageH 
+                    action NullAction()
+                    tooltip i.name
+        $ tooltip = GetTooltip()
+        
+        if tooltip:
+            nearrect:
+                focus "tooltip"
+                prefer_top True
+
+                frame:
+                    xalign 0.5
+                    text tooltip
+
+
+screen phone:
+    imagebutton:
+        xpos 0.7
+        ypos 0.4
+        idle  "images/phone.png"
+
+screen closeprints:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.3
+        idle "images/miach.png" 
+        
+        
+        #action [Hide("closeprints"),Show("lookaround"), Jump("looks")]
+
+screen closecloth:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+        
+        
+        #action [Hide("closecloth"),Show("lookaround")]
+
+screen closewires:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+
+screen closeprints2:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+
+screen closecam:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+
+screen closepaper:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+
+screen fridges:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+
+screen box:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/miach.png" 
+
+
+screen storelooks:
+    imagebutton:
+        xpos 0.5
+        ypos 0.3
+        idle "images/fridge.png"
+        action [ Hide("storelooks"),Show("fridges"),Jump("fridge")]
+
+    imagebutton:
+        xpos 0.7
+        ypos 0.3
+        idle "images/door.png"
+        action [ Hide("storelooks"),Jump("securityRoom")]
+
+    imagebutton:
+        xpos 0.3
+        ypos 0.3
+        idle "images/box.png"
+        action [ Hide("storelooks"),Show("box"),Jump("box")]
+
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("storelooks"),Jump("gasenter")]
+
+
+screen gaslooks:
+    imagebutton:
+        xpos 0.5
+        ypos 0.3
+        idle "images/footprints.png"
+        action [ Hide("gaslooks"),Show("closeprints2"),Jump("prints2")]
+
+    imagebutton:
+        xpos 0.7
+        ypos 0.3
+        idle "images/secCam.png"
+        action [ Hide("gaslooks"),Show("closecam"),Jump("cam")]
+
+    imagebutton:
+        xpos 0.3
+        ypos 0.3
+        idle "images/cpaper.png"
+        action [ Hide("gaslooks"),Show("closepaper"),Jump("paper")]
+
+    imagebutton:
+        xpos 0
+        ypos 0
+        idle "images/gas_station_door.png"
+        action [ Hide("gaslooks"),Jump("gasstationenter")]
+
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("gaslooks"),Jump("enterlooks")]
+
+
+screen gaslooks2:
+    imagebutton:
+        xpos 0.5
+        ypos 0.3
+        idle "images/footprints.png"
+        action [ Hide("gaslooks2"),Show("closeprints2"),Jump("prints2")]
+
+    imagebutton:
+        xpos 0.7
+        ypos 0.3
+        idle "images/secCam.png"
+        action [ Hide("gaslooks2"),Show("closecam"),Jump("cam")]
+
+    imagebutton:
+        xpos 0
+        ypos 0
+        idle "images/gas_station_door.png"
+        action [ Hide("gaslooks2"),Jump("gasstationenter")]
+
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("gaslooks2"),Jump("enterlooks")]
+
+
+screen lookaround:
+    imagebutton:
+        xpos 0.5
+        ypos 0.3
+        idle "images/footprints.png"
+        action [Hide("lookaround"),Show("closeprints"),Jump("foots") ]
+
+    imagebutton:
+        xpos 0.7
+        ypos 0.3
+        idle "images/cloth.png"
+        action [Hide("lookaround"),Show("closecloth"),Jump("cloths")]
+
+    imagebutton:
+        xpos 0.3
+        ypos 0.3
+        idle "images/wires.png"
+        action [Hide("lookaround"),Show("closewires"),Jump("wires")]
+
+    imagebutton:
+        xpos 0
+        ypos 0
+        idle "images/gas_station_door.png"
+        action [ Hide("lookaround"),Jump("gasenter")]
+
+screen lookaroundnocloth:
+    imagebutton:
+        xpos 0.5
+        ypos 0.3
+        idle "images/footprints.png"
+        action [ Hide("lookaroundnocloth"), Show("closeprints"),Jump("foots")]
+
+    imagebutton:
+        xpos 0.3
+        ypos 0.3
+        idle "images/wires.png"
+        action [Hide("lookaroundnocloth"), Show("closewires"),Jump("wires")]
+
+    imagebutton:
+        xpos 0
+        ypos 0
+        idle "images/gas_station_door.png"
+        action [Hide("lookaroundnocloth"), Jump("gasenter")]
+
+screen storing:
+    vbox:
+        align (0.5, 0.5)
+        for item in Inventory.items:
+            $name = item.name
+            textbutton "[name]" action Return(item)   
+
+screen secroom:
+    imagebutton:      
+        xpos 0.5 
+        ypos 0.5
+        idle "images/computer.png" 
+        action [ Hide("secroom"),Jump("computer")]      
+        
+    imagebutton:
+        xpos 0.8
+        ypos 0
+        idle "images/gobackdoor.png"
+        action [ Hide("secroom"),Jump("gasstationenter")]
+            
+transform right2:
+    xcenter  0.8
+    yalign  1.0
+
+transform right3:
+    xcenter  0.65
+    yalign  1.0
+
+transform right4:
+    xcenter 0.5
+    yalign 1.0
