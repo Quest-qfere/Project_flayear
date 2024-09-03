@@ -14,7 +14,7 @@ init:
     image bg navi_cake=im.Scale('images/navi/navi_cakeneutral.png', 1920, 1200)
     image bg gas_station_inside=im.Scale('images/bg/bg_gas_station_inside.png', 1920, 1200)
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
-    image bg rtrusExit = "images/RTrus_exit.png"
+    image bg rtrusExit = "images/bg/bg_rtrus_exit.png"
     #flayon
     image flayon_neutral=im.Scale('images/flayon/flayon_neutral.png', 683, 683)
     image flayon_confused=im.Scale('images/flayon/flayon_confused.png', 683, 683)

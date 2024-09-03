@@ -1551,7 +1551,7 @@ screen phone:
     imagebutton:
         xpos 0.7
         ypos 0.4
-        idle  "images/phone.png"
+        idle  "images/props/act_2/phone.png"
 
 screen closeprints:
     imagebutton:      
@@ -1612,25 +1612,25 @@ screen storelooks:
     imagebutton:
         xpos 0.5
         ypos 0.3
-        idle "images/fridge.png"
+        idle "images/props/act_2/fridge.png"
         action [ Hide("storelooks"),Show("fridges"),Jump("fridge")]
 
     imagebutton:
         xpos 0.7
         ypos 0.3
-        idle "images/door.png"
+        idle "images/props/act_2/door.png"
         action [ Hide("storelooks"),Jump("securityRoom")]
 
     imagebutton:
         xpos 0.3
         ypos 0.3
-        idle "images/box.png"
+        idle "images/props/act_2/box.png"
         action [ Hide("storelooks"),Show("box"),Jump("box")]
 
     imagebutton:
         xpos 0.8
         ypos 0
-        idle "images/gobackdoor.png"
+        idle "images/props/act_2/gobackdoor.png"
         action [ Hide("storelooks"),Jump("gasenter")]
 
 
@@ -1638,31 +1638,31 @@ screen gaslooks:
     imagebutton:
         xpos 0.5
         ypos 0.3
-        idle "images/footprints.png"
+        idle "images/props/act_2/footprints.png"
         action [ Hide("gaslooks"),Show("closeprints2"),Jump("prints2")]
 
     imagebutton:
         xpos 0.7
         ypos 0.3
-        idle "images/secCam.png"
+        idle "images/props/act_2/secCam.png"
         action [ Hide("gaslooks"),Show("closecam"),Jump("cam")]
 
     imagebutton:
         xpos 0.3
         ypos 0.3
-        idle "images/cpaper.png"
+        idle "images/props/act_2/cpaper.png"
         action [ Hide("gaslooks"),Show("closepaper"),Jump("paper")]
 
     imagebutton:
         xpos 0
         ypos 0
-        idle "images/gas_station_door.png"
+        idle "images/props/act_2/gas_station_door.png"
         action [ Hide("gaslooks"),Jump("gasstationenter")]
 
     imagebutton:
         xpos 0.8
         ypos 0
-        idle "images/gobackdoor.png"
+        idle "images/props/act_2/gobackdoor.png"
         action [ Hide("gaslooks"),Jump("enterlooks")]
 
 
@@ -1670,25 +1670,25 @@ screen gaslooks2:
     imagebutton:
         xpos 0.5
         ypos 0.3
-        idle "images/footprints.png"
+        idle "images/props/act_2/footprints.png"
         action [ Hide("gaslooks2"),Show("closeprints2"),Jump("prints2")]
 
     imagebutton:
         xpos 0.7
         ypos 0.3
-        idle "images/secCam.png"
+        idle "images/props/act_2/secCam.png"
         action [ Hide("gaslooks2"),Show("closecam"),Jump("cam")]
 
     imagebutton:
         xpos 0
         ypos 0
-        idle "images/gas_station_door.png"
+        idle "images/props/act_2/gas_station_door.png"
         action [ Hide("gaslooks2"),Jump("gasstationenter")]
 
     imagebutton:
         xpos 0.8
         ypos 0
-        idle "images/gobackdoor.png"
+        idle "images/props/act_2/gobackdoor.png"
         action [ Hide("gaslooks2"),Jump("enterlooks")]
 
 
@@ -1696,44 +1696,44 @@ screen lookaround:
     imagebutton:
         xpos 0.5
         ypos 0.3
-        idle "images/footprints.png"
+        idle "images/props/act_2/footprints.png"
         action [Hide("lookaround"),Show("closeprints"),Jump("foots") ]
 
     imagebutton:
         xpos 0.7
         ypos 0.3
-        idle "images/cloth.png"
+        idle "images/props/act_2/cloth.png"
         action [Hide("lookaround"),Show("closecloth"),Jump("cloths")]
 
     imagebutton:
         xpos 0.3
         ypos 0.3
-        idle "images/wires.png"
+        idle "images/props/act_2/wires.png"
         action [Hide("lookaround"),Show("closewires"),Jump("wires")]
 
     imagebutton:
         xpos 0
         ypos 0
-        idle "images/gas_station_door.png"
+        idle "images/props/act_2/gas_station_door.png"
         action [ Hide("lookaround"),Jump("gasenter")]
 
 screen lookaroundnocloth:
     imagebutton:
         xpos 0.5
         ypos 0.3
-        idle "images/footprints.png"
+        idle "images/props/act_2/footprints.png"
         action [ Hide("lookaroundnocloth"), Show("closeprints"),Jump("foots")]
 
     imagebutton:
         xpos 0.3
         ypos 0.3
-        idle "images/wires.png"
+        idle "images/props/act_2/wires.png"
         action [Hide("lookaroundnocloth"), Show("closewires"),Jump("wires")]
 
     imagebutton:
         xpos 0
         ypos 0
-        idle "images/gas_station_door.png"
+        idle "images/props/act_2/gas_station_door.png"
         action [Hide("lookaroundnocloth"), Jump("gasenter")]
 
 screen storing:
@@ -1747,13 +1747,13 @@ screen secroom:
     imagebutton:      
         xpos 0.5 
         ypos 0.5
-        idle "images/computer.png" 
+        idle "images/props/act_2/computer.png" 
         action [ Hide("secroom"),Jump("computer")]      
         
     imagebutton:
         xpos 0.8
         ypos 0
-        idle "images/gobackdoor.png"
+        idle "images/props/act_2/gobackdoor.png"
         action [ Hide("secroom"),Jump("gasstationenter")]
             
 transform right2:
