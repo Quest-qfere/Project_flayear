@@ -1,11 +1,11 @@
-2024-09-03 01:20:41 UTC
+2024-09-03 01:22:04 UTC
 Windows-10-10.0.22631
 Ren'Py 8.2.1.24030407
 
-Early init took 0.05s
+Early init took 0.04s
 Loading error handling took 0.05s
-Loading script took 0.22s
-Loading save slot metadata took 0.09s
+Loading script took 0.21s
+Loading save slot metadata took 0.08s
 Loading persistent took 0.00s
 Running init code took 0.04s
 Loading analysis data took 0.02s
@@ -13,25 +13,25 @@ Analyze and compile ATL took 0.00s
 Reloading save slot metadata took 0.02s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\vikr4\\AppData\\Roaming/RenPy/backups\\Project_flayear':
-Dump and make backups took 0.04s
+Dump and make backups took 0.03s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc took 0.02s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.25s
+Creating interface object took 0.23s
 Cleaning stores took 0.00s
 Init translation took 0.02s
 Build styles took 0.00s
 Load screen analysis took 0.01s
 Analyze screens took 0.01s
-Save screen analysis took 0.01s
+Save screen analysis took 0.02s
 Prepare screens took 0.05s
-Save pyanalysis. took 0.00s
+Save pyanalysis. took 0.01s
 Save bytecode. took 0.03s
 Running _start took 0.00s
-Interface start took 0.20s
+Interface start took 0.23s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
@@ -43,29 +43,10 @@ Version: b'4.6.0 NVIDIA 556.13'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
 Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script.rpy", line 748, in script
-    call screen birthday_button
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
-    self.call("execute")
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\exports.py", line 3399, in call_screen
-    show_screen(_screen_name, *args, _transient=True, **kwargs)
-  File "C:\Users\vikr4\Desktop\palulu\renpy-8.2.1-sdk\renpy\display\screen.py", line 1322, in show_screen
-    raise Exception("Screen %s is not known.\n" % (name[0],))
-Exception: Screen birthday_button is not known.
-
-
-While running game code:
-  File "game/script.rpy", line 748, in script
-    call screen birthday_button
-  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-Exception: Screen birthday_button is not known.
-
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s

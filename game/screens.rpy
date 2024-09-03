@@ -1767,3 +1767,14 @@ transform right3:
 transform right4:
     xcenter 0.5
     yalign 1.0
+
+screen birthday_button:
+    modal True
+    button:
+        xalign 0.5
+        yalign 0.5
+        xysize (300, 100)
+        text "Make a wish!"
+        action Return()
+        background "gui/button/choice_idle_background.png"
+        hover_background "gui/button/choice_hover_background.png"

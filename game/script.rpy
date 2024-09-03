@@ -176,7 +176,7 @@ define fastdissolve = Dissolve(0.2)
 
 label start:
     # These display lines of dialogue.
-    jump act_4
+    jump intro_sequence
 
 label show_interactive_items:
     show screen gas_station_items
@@ -681,6 +681,7 @@ label computer:
     show transition
     $ renpy.pause(7.8, hard=True)
     "END OF ACT"
+    jump act_4
 
 label act_4:
         # These display lines of dialogue.
