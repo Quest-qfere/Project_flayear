@@ -425,6 +425,7 @@ label act2_start:
             hide cain_neutral
             show cain_flex at charfarright
             with fastdissolve
+            jump act2_scene2
         "Hey… are you sure none of you heard anything weird?":
             KIT "Nope!"
             hide kit_concerned
@@ -438,17 +439,19 @@ label act2_start:
             hide flayon_confused
             show flayon_concerned
             with fastdissolve
-    jump act2_scene2
+            jump act2_scene2
 
 label act2_scene2:
     hide kit_neutral
+    hide kit_concerned
     hide dean_neutral
     hide cain_neutral
     hide navi_worried
     hide cain_flex
     hide kit_worried
-    hide dean_worried
+    hide dean_concern
     hide flayon_confused
+    hide flayon_concerned
     with fastdissolve
     FLAY "Hmm, maybe I should check outside first?"
     hide flayon_concerned at charfarleft
