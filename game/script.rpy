@@ -223,6 +223,7 @@ label intro_sequence:
     FLAY "And we traveled in none other than my giant mech, the R-TRUS! He's pretty cool!"
     FLAY "We all got ready and set off towards the coordinates..."
     show bg pilot_room with fade
+    play music "music/upbeat_song.mp3"
     pause 1
     show flayon_neutral at charfarleft
     with fastdissolve
@@ -232,21 +233,25 @@ label intro_sequence:
     with fastdissolve
     pause 0.3
     NAVI "We're getting closer now. ETA is one hour!"
+    "{i}[[Insert description of Navi here.]{/i}"    
     show rtrus_screen_1 at rtrus_screen_bottommidleft
     show cain_neutral_cropped at rtrus_screen_bottommidleft
     with fastdissolve
     pause 0.3
     CAIN "All systems are looking cool! No problems here, boss!"
+    "{i}[[Insert description of Cain here.]{/i}"
     show rtrus_screen_2 at rtrus_screen_topmid
     show dean_smug_cropped at rtrus_screen_topmid
     with fastdissolve
     pause 0.3
     DEAN "To be honest, this whole operation has gone a lot smoother than I imagined."
+    "{i}[[Insert description of Dean here.]{/i}"
     show rtrus_screen_3 at rtrus_screen_bottommidright
     show charli_neutral_cropped at rtrus_screen_bottommidright
     with fastdissolve
     pause 0.3
     CHARLI "Yup! Everything's all clear from my side too-nya~"
+    "{i}[[Insert description of Charli here.]{/i}"
     show rtrus_screen_4 at rtrus_screen_topright
     show kit_concerned_cropped at rtrus_screen_topright
     with fastdissolve
@@ -261,6 +266,7 @@ label intro_sequence:
     KIT "..."
     KIT "I'm suuuuuuuuuuper hungry!"
     KIT "Can we stop for snacks? Please?"
+    "{i}[[Insert description of Kit here.]{/i}"
     hide dean_smug_cropped
     show dean_facepalm_cropped at rtrus_screen_topmid
     with fastdissolve
@@ -270,12 +276,14 @@ label intro_sequence:
     with fastdissolve
     FLAY "Sure, we have time! There must be a place nearby."
     NAVI "Sending coordinates now!"
+    
     pause 0.5
     FLAY "Nice! There's a gas station right here? How convenient!"
     FLAY "Ok guys, let's stop here! This won't take too long."
     hide kit_crying_cropped
     show kit_starryeyed_cropped at rtrus_screen_topright
-    KIT "Yay!" 
+    KIT "Yay!"  
+    stop music  
     hide flayon_neutral
     hide kit_starryeyed_cropped
     hide navi_neutral_cropped
@@ -290,6 +298,8 @@ label intro_sequence:
     with dissolve
     scene bg gas_station_outside with fade
     pause 1.5
+
+    play music "music/tense_song.mp3"
     show flayon_concerned at charfarleft
     show navi_disgusted at charfarright
     with dissolve
@@ -338,6 +348,7 @@ label snack_chosen:
     show navi_snacks at charfarright
     with fastdissolve
     NAVI "Finally! Time to get back on track!"
+    stop music
     hide flayon_neutral
     hide navi_snacks
     with fastdissolve
@@ -359,6 +370,7 @@ label offline:
     with fastdissolve
     FLAY "Alright, time to take off!"
     pause 2.0
+    play music "music/error_song.mp3"
     show error_1 at rtrus_screen_topleft
     show error_2 at rtrus_screen_bottommidleft
     show error_3 at rtrus_screen_topright
@@ -379,6 +391,7 @@ label offline:
     with fastdissolve
     FLAY "Machiroons, if you can hear this, meet me outside ASAP!"
     hide flayon_concerned with fastdissolve
+    stop music
     pause 0.5
     jump act2_start
 
@@ -456,6 +469,7 @@ label act2_scene2:
     FLAY "Hmm, maybe I should check outside first?"
     hide flayon_concerned at charfarleft
     show flayon_neutral at charfarleft 
+    play music "music/mystery_song.mp3"
     with fastdissolve
     jump looks
 
@@ -676,6 +690,7 @@ label securityRoomEnter2:
     jump securityRoomEnter
 
 label computer:
+    stop music
     hide flayon_smug
     show flayon_concentrating at charfarleft
 
@@ -683,177 +698,5 @@ label computer:
 
     show transition
     $ renpy.pause(7.8, hard=True)
-    "END OF ACT"
-    jump act_4
-
-label act_4:
-        # These display lines of dialogue.
-    show bg party_room with fade
-    pause 0.5
-    show flayon_surprised at charfarleft
-    show charli_excited at charfarright
-    with fastdissolve
-    FLAY "Charli!?"
-    CHARLI "Hi Flay! Surprise~"
-    hide flayon_surprised
-    show flayon_excited at charfarleft
-    FLAY "You're okay!"
-    CHARLI "Of course I am, silly! Sorry for tricking you, hehe~ How else would we get you to your surprise party?"
-    hide flayon_excited
-    show flayon_confused at charfarleft
-    
-    with fastdissolve
-    FLAY "Surprise... party...?"
-    show cain_excited at charright with fastdissolve
-    CAIN "YEAH! Happy birthday, man! Did you really think we forgot?"
-    hide flayon_confused
-    show flayon_neutral at charfarleft
-    with fastdissolve
-    FLAY "Honestly, I was so distracted I kind of forgot myself."
-    #hide cain_excited with fastdissolve
-    show kit_excited at charmidright with fastdissolve
-    KIT "Well that's nooooo good! We are gonna make sure you have the BEST party ever!"
-    #hide kit_excited with fastdissolve
-    show dean_neutral at charmid with fastdissolve 
-    DEAN "I did try to advise against the whole \"fake kidnapping\" scenario, by the way."
-    CHARLI "You have to admit, I'm a very good actor, right?"
-    hide dean_neutral
-    show dean_smug at charmid
-    with fastdissolve
-    DEAN "...Yes. You did well."
-    FLAY "So the whole thing was fake?"
-    hide kit_excited
-    show kit_neutral at charmidright
-    with fastdissolve
-    KIT "It was! Come on, when would I ever ask to stop for snacks in the middle of a mission?"
-    hide cain_excited
-    show cain_neutral at charright
-    with fastdissolve
-    CAIN "Tiny, that is totally something you would do."
-    FLAY "You organized all of this, just to surprise me?"
-    hide dean_smug
-    show dean_neutral at charmid
-    with fastdissolve
-    DEAN "Correct. We thought you deserved something grand."
-    DEAN "...a gas station basement isn't exactly what I had in mind."
-    hide charli_excited
-    show charli_neutral at charfarright
-    with fastdissolve
-    CHARLI "We made it work! I think it's purr-fect!"
-    FLAY "It's very... well... roon-coded!"
-    NAVI "Ahem! Quick! Before the candles go out!"
-    hide flayon_neutral
-    hide charli_neutral
-    hide dean_neutral
-    hide cain_neutral
-    hide kit_neutral
-    with dissolve
-    scene bg navi_cake with fade
-    call screen birthday_button
-    scene bg party_room with fade
-    show flayon_neutral at charfarleft
-    show navi_cake_neutral at charmidright
-    with fastdissolve
-    NAVI "Happy birthday, Machina!"
-    NAVI "Hopefully you like the cake; I spent a {i}while{/i} decorating it."
-    hide navi_cake_neutral 
-    show navi_cake_annoyed at charmidright
-    with fastdissolve
-    NAVI "...I mean. It didn't take that long. It actually took no time at all! Ha!"
-    NAVI "..."
-    hide navi_cake_annoyed
-    show navi_cake_neutral at charmidright
-    with fastdissolve
-    NAVI "But I do hope you like it. And I hope you have an... {i}adequate{/i} birthday!"
-    FLAY "Thank you, Navi! The cake looks great!"
-    hide navi_cake_neutral with fastdissolve
-    pause 0.1
-    show cain_neutral at charmidright with fastdissolve
-    CAIN "Happy birthday, boss!"
-    CAIN "Sorry about the fighting earlier. I still want a rematch, though!"
-    hide cain_neutral
-    show cain_excited at charmidright
-    with fastdissolve
-    CAIN "Enjoy the party, dude! You so totally deserve it! You're like, the best leader ever!"
-    CAIN "HIGH FIVE!!!"
-    hide window
-    pause 0.3
-    hide cain_excited with fastdissolve
-    pause 0.1
-    show dean_neutral at charmidright with fastdissolve
-    window show
-    DEAN "Machina, happy birthday!"
-    DEAN "Like I mentioned, I was against this whole \"Birthday Scavenger Hunt\" situation."
-    hide dean_neutral
-    show dean_smug at charmidright
-    with fastdissolve
-    DEAN "But I have to say, it was pretty fun. I hope you had fun too."
-    hide dean_smug
-    show dean_concern at charmidright
-    with fastdissolve
-    DEAN "And I promise I will get Cain and Charli to fix the damages on the R-TRUS before we leave. They aren't that bad... {size=-10}I hope.{/size}"
-    hide flayon_neutral
-    show flayon_confused at charfarleft
-    with fastdissolve
-    FLAY "Thanks, Dean! Wait, you guys actually damaged it? But---{nw}"
-    hide dean_concern
-    show kit_excited at charmidright
-    with fastdissolve
-    KIT "FLAY!"
-    KIT "Do you like the decorations?! I put them all up myself!"
-    hide kit_excited
-    show kit_neutral at charmidright
-    with fastdissolve
-    KIT "I wanted to do indoor fireworks, but Navi told me no."
-    hide kit_neutral
-    show kit_starryeyed at charmidright
-    with fastdissolve
-    KIT "I HOPE YOU HAVE THE BEST BIRTHDAY EVEEEEEEEEEER!"
-    KIT "We love you! Don't forget it!"
-    hide kit_starryeyed
-    show kit_excited at charmidright
-    with fastdissolve
-    KIT "Let's party! YAYYYYY!"
-    hide kit_excited with fastdissolve
-    pause 0.1
-    show charli_neutral at charmidright 
-    show flayon_neutral at charfarleft
-    with fastdissolve
-    CHARLI "Hiya, Machinya! Sorry for today!"
-    CHARLI "This whole thing was my idea and I may have gotten slightly carried away! Hehe..."
-    hide charli_neutral
-    show charli_excited at charmidright
-    with fastdissolve
-    CHARLI "But, I just wanted to make sure you had the best party ever! You do so much for us, and we are all so thankful, meow!"
-    hide charli_excited
-    show charli_neutral at charmidright
-    with fastdissolve
-    CHARLI "Thank you, Machi! I hope you have the best birthday!"
-    FLAY "Charli... everyone... thank you!"
-    show navi_neutral at charmidleft
-    show cain_neutral at charmid
-    show dean_neutral at charright
-    show kit_neutral at charfarright
-    with fastdissolve
-    "Happy birthday, Flayon!"
-    NAVI "We hope you had fun!"
-    NAVI "Sending you around on a wild goose chase was honestly pretty funny!"
-    hide cain_neutral
-    show cain_flex at charmid
-    with fastdissolve
-    CAIN "Next year, how about we do an arm wrestling bracket?"
-    CAIN "No? I'll keep training anyway."
-    DEAN "It was definitely an {i}interesting{/i} way to show our appreciation..."
-    DEAN "But hopefully, we got the message across."
-    KIT "Happy birthday, Flayon! Thank you for everything!"
-    CHARLI "We love you! Meow and forever~ We couldn't think of anyone better to be our leader!"
-    hide charli_neutral
-    show charli_excited at charmidright
-    with fastdissolve
-    CHARLI "Now, time to party!"
-    scene black with fade
-    hide window
-    pause 5.0
-    window show
-    "THE END."
+    "To be continued..."
     return
