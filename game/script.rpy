@@ -12,7 +12,7 @@ init:
     image bg party_room=im.Scale('images/bg/bg_partyroom.png', 1920, 1200)
     image bg pilot_room=im.Scale('images/bg/bg_pilotroom.png', 1920, 1000)
     image bg navi_cake=im.Scale('images/navi/navi_cakeneutral.png', 1920, 1200)
-    image bg gas_station_inside=im.Scale('images/bg/bg_gas_station_inside.png', 1920, 1200)
+    image bg gas_station_inside=im.Scale('images/bg/insidedoorCLOSED_3.png', 1920, 1200)
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
     image bg rtrusExit = "images/bg/bg_rtrus_exit.png"
     #flayon
@@ -182,25 +182,25 @@ label show_interactive_items:
     show screen gas_station_items
     with fastdissolve
     "Click on an item to interact with it."
-    pause
+    call screen gas_station_items
 
 screen gas_station_items():
     imagebutton:
         xpos 100
         ypos 300
-        idle "images/props/act_1/snack1_idle.png"
-        hover "images/props/act_1/snack1_hover.png"
+        idle im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",200, 200)
+        hover  im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",300, 200) 
         action Jump("snack_chosen")
 
     imagebutton:
         xpos 400
         ypos 300
-        idle "images/props/act_1/snack2_idle.png"
-        hover "images/props/act_1/snack2_hover.png"
+        idle im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",200,200)
+        hover im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",300,200)
         action Jump("snack_chosen")
 
     imagebutton:
-        xpos 700
+        xpos 1100
         ypos 300
         idle "images/props/act_1/door_idle.png"
         hover "images/props/act_1/door_hover.png"
@@ -299,7 +299,7 @@ label intro_sequence:
     scene bg gas_station_outside with fade
     pause 1.5
 
-    play music "music/tense_song.mp3"
+    play music "music/upbeat_song.mp3"
     show flayon_concerned at charfarleft
     show navi_disgusted at charfarright
     with dissolve
@@ -440,17 +440,23 @@ label act2_start:
             with fastdissolve
             jump act2_scene2
         "Hey… are you sure none of you heard anything weird?":
-            KIT "Nope!"
             hide kit_concerned
             show kit_neutral at charmidright
+            KIT "Nope!"
+            #hide kit_concerned
+            #show kit_neutral at charmidright
             with fastdissolve
-            DEAN "Nothing at all."
             hide dean_concern
             show dean_neutral at charmid
+            DEAN "Nothing at all."
+            #hide dean_concern
+            #show dean_neutral at charmid
+            hide flayon_confused
+            show flayon_concerned at charfarleft
             with fastdissolve
             FLAY "Got it..."
-            hide flayon_confused
-            show flayon_concerned
+            #hide flayon_confused
+            #show flayon_concerned
             with fastdissolve
             jump act2_scene2
 
@@ -577,7 +583,7 @@ label cam:
 
 label paper:
     FLAY "...hm!"
-    queue sound "sfx/door-bang-1wav-14449.mp3"
+    #queue sound "sfx/door-bang-1wav-14449.mp3"
     hide flayon_neutral
     show flayon_confused at charfarleft
     FLAY "Should I keep this...?"
@@ -642,6 +648,7 @@ label placeitem:
                 call screen storing
                 $stored = _return
                 $Inventory.remove(stored)
+                jump store  
             "No":
                 show flayon_neutral at charfarleft
                 jump store       
@@ -649,7 +656,7 @@ label placeitem:
     show flayon_neutral at charfarleft
     if (Inventory.amount == 0):
         FLAY "There is nothing to put in the box"
-    
+        jump store
     jump store
 
 
