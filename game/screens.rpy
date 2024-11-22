@@ -9,6 +9,7 @@ init offset = -1
 ## Styles
 ################################################################################
 
+
 style default:
     properties gui.text_properties()
     language gui.language
@@ -95,6 +96,7 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
+
 screen say(who, what):
     style_prefix "say"
 
@@ -160,6 +162,74 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
+#Here's my definiton of the gallery the buttons that I created here will be used in the gallery.rpy
+screen music_room:
+
+    tag menu
+
+   # The background.
+    add "images/music_room.png"
+    frame:
+        has vbox
+        # The buttons that play each track.
+        textbutton "Track 1" action mr.Play("music/baby-mandala-169039.mp3")
+        textbutton "Track 2" action mr.Play("music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
+        textbutton "Track 3" action mr.Play("music/midnight-forest-184304.mp3")
+        textbutton "sfx1" action mr.Play("sfx/sliding-noise-v2-83483.mp3")
+        textbutton "sfx2" action mr.Play("sfx/jixaw-metal-pipe-falling-sound.mp3")
+        null height 20
+
+        # Buttons that let us advance tracks.
+        textbutton "Next" action mr.Next()
+        textbutton "Previous" action mr.Previous()
+
+        null height 20
+
+        # The button that lets the user exit the music room.
+        textbutton "Main Menu" action [ShowMenu("main_menu"),Stop("music")]
+    # Start the music playing on entry to the music room.
+    on "replace" action Stop("music")
+
+    # Restore the main menu music upon leaving.
+    on "Main Menu" action Stop("music")
+screen gallery:
+
+    # Ensure this replaces the main menu.
+    tag menu
+
+    # The background.
+     
+    add "images/art_room.png"
+    #default page
+    default curpage = "page1"
+    #the vbox part allows for mutlipe pages
+    vbox  :
+        hbox xalign 1.0 :
+            textbutton "Page 1" action SetScreenVariable("curpage", "page1") 
+            textbutton "Page 2" action SetScreenVariable("curpage", "page2") 
+            textbutton "Page 3" action SetScreenVariable("curpage", "page3") 
+            yoffset 1000
+    
+    # A grid of buttons, we can expand the scope to include more images later.
+        grid 2 2:
+
+             xfill True
+             yfill True
+
+        # single image buttons, we could lock them and put placeholder images. Also I cropped them to give a thumb nail apparence that wasan't really necessary.
+             if curpage == "page1":
+               add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+               add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+             if curpage == "page2":
+               add g.make_button("himbo",im.Scale("images/himbo_title_card.png",400,400),xalign=0.5, yalign=0.5)
+               add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.5, yalign=0.5)
+             if curpage == "page3":
+                add g.make_button("example",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
+                add g.make_button("maid",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
+
+        # The screen is responsible for returning to the main menu. It could also
+        # navigate to other gallery screens.
+    textbutton "Return" action Return() xalign 0.1 yalign 0.9
 
 ## Input screen ################################################################
 ##
@@ -308,10 +378,13 @@ screen navigation():
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
+            
 
         textbutton _("Load") action ShowMenu("load")
-
+        textbutton "Art room" action ShowMenu("gallery")
+        textbutton "Music room" action ShowMenu("music_room")
         textbutton _("Preferences") action ShowMenu("preferences")
+            
 
         if _in_replay:
 
@@ -356,8 +429,6 @@ screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
-
-    on "show" action Play("music", "music/main_menu_theme.mp3") 
 
     add gui.main_menu_background
 
@@ -1518,265 +1589,3 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
-
-screen inventory_button:
-    textbutton "Inventory" action [ Show("Inven"),Hide("inventory_button")] align (0.95, 0.04)
-
-screen Inven:
-    add "gui/main_menu.png" xalign 1
-    hbox align (0.95, 0.04)  spacing 20:
-        textbutton "Close Inventory" action [Hide("Inven"), Show("inventory_button")]
-    if Inventory.amount == 0:
-        text "no items :c" at transform:
-            align (0.5, 0.1)
-    else:
-        hbox xfill False spacing 15 xalign 0.5:
-            for i in Inventory.items:
-                imagebutton:
-                    idle i.image 
-                    hover i.imageH 
-                    action NullAction()
-                    tooltip i.name
-        $ tooltip = GetTooltip()
-        
-        if tooltip:
-            nearrect:
-                focus "tooltip"
-                prefer_top True
-
-                frame:
-                    xalign 0.5
-                    text tooltip
-
-
-screen phone:
-    imagebutton:
-        xpos 0.7
-        ypos 0.4
-        idle  "images/props/act_2/phone.png"
-
-screen closeprints:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.3
-        idle "images/miach.png" 
-        
-        
-        #action [Hide("closeprints"),Show("lookaround"), Jump("looks")]
-
-screen closecloth:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-        
-        
-        #action [Hide("closecloth"),Show("lookaround")]
-
-screen closewires:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-
-screen closeprints2:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-
-screen closecam:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-
-screen closepaper:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-
-screen fridges:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-
-screen box:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/miach.png" 
-
-
-screen storelooks:
-    imagebutton:
-        xpos 0.5
-        ypos 0.3
-        idle "images/props/act_2/fridge.png"
-        action [ Hide("storelooks"),Show("fridges"),Jump("fridge")]
-
-    imagebutton:
-        xpos 0.7
-        ypos 0.3
-        idle "images/props/act_2/door.png"
-        action [ Hide("storelooks"),Jump("securityRoom")]
-
-    imagebutton:
-        xpos 0.3
-        ypos 0.3
-        idle "images/props/act_2/box.png"
-        action [ Hide("storelooks"),Show("box"),Jump("box")]
-
-    imagebutton:
-        xpos 0.8
-        ypos 0
-        idle "images/props/act_2/gobackdoor.png"
-        action [ Hide("storelooks"),Jump("gasenter")]
-
-
-screen gaslooks:
-    imagebutton:
-        xpos 0.5
-        ypos 0.3
-        idle "images/props/act_2/footprints.png"
-        action [ Hide("gaslooks"),Show("closeprints2"),Jump("prints2")]
-
-    imagebutton:
-        xpos 0.7
-        ypos 0.3
-        idle "images/props/act_2/secCam.png"
-        action [ Hide("gaslooks"),Show("closecam"),Jump("cam")]
-
-    imagebutton:
-        xpos 0.3
-        ypos 0.3
-        idle "images/props/act_2/cpaper.png"
-        action [ Hide("gaslooks"),Show("closepaper"),Jump("paper")]
-
-    imagebutton:
-        xpos 0
-        ypos 0
-        idle "images/props/act_2/gas_station_door.png"
-        action [ Hide("gaslooks"),Jump("gasstationenter")]
-
-    imagebutton:
-        xpos 0.8
-        ypos 0
-        idle "images/props/act_2/gobackdoor.png"
-        action [ Hide("gaslooks"),Jump("enterlooks")]
-
-
-screen gaslooks2:
-    imagebutton:
-        xpos 0.5
-        ypos 0.3
-        idle "images/props/act_2/footprints.png"
-        action [ Hide("gaslooks2"),Show("closeprints2"),Jump("prints2")]
-
-    imagebutton:
-        xpos 0.7
-        ypos 0.3
-        idle "images/props/act_2/secCam.png"
-        action [ Hide("gaslooks2"),Show("closecam"),Jump("cam")]
-
-    imagebutton:
-        xpos 0
-        ypos 0
-        idle "images/props/act_2/gas_station_door.png"
-        action [ Hide("gaslooks2"),Jump("gasstationenter")]
-
-    imagebutton:
-        xpos 0.8
-        ypos 0
-        idle "images/props/act_2/gobackdoor.png"
-        action [ Hide("gaslooks2"),Jump("enterlooks")]
-
-
-screen lookaround:
-    imagebutton:
-        xpos 0.5
-        ypos 0.3
-        idle "images/props/act_2/footprints.png"
-        action [Hide("lookaround"),Show("closeprints"),Jump("foots") ]
-
-    imagebutton:
-        xpos 0.7
-        ypos 0.3
-        idle "images/props/act_2/cloth.png"
-        action [Hide("lookaround"),Show("closecloth"),Jump("cloths")]
-
-    imagebutton:
-        xpos 0.3
-        ypos 0.3
-        idle "images/props/act_2/wires.png"
-        action [Hide("lookaround"),Show("closewires"),Jump("wires")]
-
-    imagebutton:
-        xpos 0
-        ypos 0
-        idle "images/props/act_2/gas_station_door.png"
-        action [ Hide("lookaround"),Jump("gasenter")]
-
-screen lookaroundnocloth:
-    imagebutton:
-        xpos 0.5
-        ypos 0.3
-        idle "images/props/act_2/footprints.png"
-        action [ Hide("lookaroundnocloth"), Show("closeprints"),Jump("foots")]
-
-    imagebutton:
-        xpos 0.3
-        ypos 0.3
-        idle "images/props/act_2/wires.png"
-        action [Hide("lookaroundnocloth"), Show("closewires"),Jump("wires")]
-
-    imagebutton:
-        xpos 0
-        ypos 0
-        idle "images/props/act_2/gas_station_door.png"
-        action [Hide("lookaroundnocloth"), Jump("gasenter")]
-
-screen storing:
-    vbox:
-        align (0.5, 0.5)
-        for item in Inventory.items:
-            $name = item.name
-            textbutton "[name]" action Return(item)   
-
-screen secroom:
-    imagebutton:      
-        xpos 0.5 
-        ypos 0.5
-        idle "images/props/act_2/computer.png" 
-        action [ Hide("secroom"),Jump("computer")]      
-        
-    imagebutton:
-        xpos 0.8
-        ypos 0
-        idle "images/props/act_2/gobackdoor.png"
-        action [ Hide("secroom"),Jump("gasstationenter")]
-            
-transform right2:
-    xcenter  0.8
-    yalign  1.0
-
-transform right3:
-    xcenter  0.65
-    yalign  1.0
-
-transform right4:
-    xcenter 0.5
-    yalign 1.0
-
-screen birthday_button:
-    modal True
-    button:
-        xalign 0.5
-        yalign 0.5
-        xysize (300, 100)
-        text "Make a wish!"
-        action Return()
-        background "gui/button/choice_idle_background.png"
-        hover_background "gui/button/choice_hover_background.png"

@@ -190,14 +190,14 @@ screen gas_station_items():
         ypos 300
         idle im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",200, 200)
         hover  im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",300, 200) 
-        action Jump("snack_chosen")
+        action Jump("snack_chosen_cat_fish")
 
     imagebutton:
         xpos 400
         ypos 300
         idle im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",200,200)
         hover im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",300,200)
-        action Jump("snack_chosen")
+        action Jump("snack_chosen_protein_bar")
 
     imagebutton:
         xpos 1100
@@ -338,7 +338,20 @@ label intro_sequence:
     hide flayon_neutral
     hide navi_worried
     jump show_interactive_items
-
+label snack_chosen_protein_bar:
+    FLAY "maybe I want a chip tho... should I go with the donut?"
+    menu:
+        "yes":
+            jump snack_chosen
+        "no":
+            jump show_interactive_items
+label snack_chosen_cat_fish:
+    FLAY "maybe I want a donut tho... should I go with the chip?"
+    menu:
+        "yes":
+            jump snack_chosen
+        "no":
+            jump show_interactive_items
 label snack_chosen:
     hide screen gas_station_items
     with fastdissolve
@@ -403,6 +416,7 @@ label act2_start:
         paper_taken = False
         box = False
         seenComp = False
+        box_seen = False
     scene bg rtrusExit with fade
     show flayon_neutral at charfarleft
     show dean_concern at charmid
@@ -587,6 +601,8 @@ label paper:
     hide flayon_neutral
     show flayon_confused at charfarleft
     FLAY "Should I keep this...?"
+    if box_seen:
+        FLAY "This reminds me of that box."
 menu:
     "Keep the note":
         "Crumpled Note added to Inventory"
@@ -635,6 +651,7 @@ label box:
         jump placeitem
     else:
         FLAY "A box."
+        $box_seen = True
         FLAY "An empty box."
         hide screen box
         jump placeitem
