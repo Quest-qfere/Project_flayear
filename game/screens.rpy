@@ -166,17 +166,14 @@ style say_dialogue:
 screen music_room:
 
     tag menu
-
-   # The background.
     add "images/music_room.png"
     frame:
         has vbox
         # The buttons that play each track.
-        textbutton "Track 1" action mr.Play("music/baby-mandala-169039.mp3")
-        textbutton "Track 2" action mr.Play("music/leonell-cassio-the-paranormal-is-real-ft-carrie-163742.mp3")
-        textbutton "Track 3" action mr.Play("music/midnight-forest-184304.mp3")
-        textbutton "sfx1" action mr.Play("sfx/sliding-noise-v2-83483.mp3")
-        textbutton "sfx2" action mr.Play("sfx/jixaw-metal-pipe-falling-sound.mp3")
+        textbutton "Track 1" action mr.Play("music/main_menu_theme.mp3")
+        textbutton "Track 2" action mr.Play("music/mystery_song.mp3")
+        textbutton "Track 3" action mr.Play("music/tense_song.mp3")
+        textbutton "Track 4" action mr.Play("music/upbeat_song.mp3")
         null height 20
 
         # Buttons that let us advance tracks.
@@ -212,18 +209,17 @@ screen gallery:
     
     # A grid of buttons, we can expand the scope to include more images later.
         grid 2 2:
-
-             xfill True
-             yfill True
+            xfill True
+            yfill True
 
         # single image buttons, we could lock them and put placeholder images. Also I cropped them to give a thumb nail apparence that wasan't really necessary.
-             if curpage == "page1":
-               add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
-               add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
-             if curpage == "page2":
-               add g.make_button("himbo",im.Scale("images/himbo_title_card.png",400,400),xalign=0.5, yalign=0.5)
-               add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.5, yalign=0.5)
-             if curpage == "page3":
+            if curpage == "page1":
+                add g.make_button(name="Machi", unlocked=(im.Scale("images/Machi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+                add g.make_button(name="Navi", unlocked=(im.Scale("images/Navi_title_card.png",400,400)),locked=(im.Scale("images/locked.png",400,400)), xalign=0.5, yalign=0.5) 
+            if curpage == "page2":
+                add g.make_button("CAIN",im.Scale("images/himbo_title_card.png",400,400),xalign=0.5, yalign=0.5)
+                add g.make_button("maid",im.Scale("images/maid_title_card.png",400,400),xalign=0.5, yalign=0.5)
+            if curpage == "page3":
                 add g.make_button("example",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
                 add g.make_button("maid",im.Scale("images/example.png",400,400),xalign=0.5, yalign=0.5)
 
