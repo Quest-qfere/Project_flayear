@@ -10,7 +10,8 @@ default preferences.text_cps = 40
 init:
     #backgrounds    
     image bg party_room=im.Scale('images/bg/bg_partyroom.png', 1920, 1200)
-    image bg pilot_room=im.Scale('images/bg/bg_pilotroom.png', 1920, 1000)
+    image bg pilot_room=im.Scale('images/bg/EMPTY_R-Trus Cockpit.png', 1920, 1000)
+    image bg pilot_room_error=im.Scale('images/bg/ERROR_R-Trus Cockpit.png', 1920, 1000)
     image bg navi_cake=im.Scale('images/navi/navi_cakeneutral.png', 1920, 1200)
     image bg gas_station_inside=im.Scale('images/bg/insidedoorCLOSED_3.png', 1920, 1200)
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
@@ -182,21 +183,22 @@ label show_interactive_items:
     show screen gas_station_items
     with fastdissolve
     "Click on an item to interact with it."
+    window hide
     call screen gas_station_items
 
 screen gas_station_items():
     imagebutton:
-        xpos 100
-        ypos 300
-        idle im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",200, 200)
-        hover  im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",300, 200) 
+        xpos 500
+        ypos 760
+        idle im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",100, 100)
+        hover  im.Scale("images/props/act_1/Food Item 01 - Cat Fish.png",100, 100) 
         action Jump("snack_chosen_cat_fish")
 
     imagebutton:
-        xpos 400
-        ypos 300
-        idle im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",200,200)
-        hover im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",300,200)
+        xpos 600
+        ypos 700
+        idle im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",100,100)
+        hover im.Scale("images/props/act_1/Food Item 06 - Protein Bar.png",100,100)
         action Jump("snack_chosen_protein_bar")
 
     imagebutton:
@@ -283,7 +285,6 @@ label intro_sequence:
     hide kit_crying_cropped
     show kit_starryeyed_cropped at rtrus_screen_topright
     KIT "Yay!"  
-    stop music  
     hide flayon_neutral
     hide kit_starryeyed_cropped
     hide navi_neutral_cropped
@@ -339,14 +340,14 @@ label intro_sequence:
     hide navi_worried
     jump show_interactive_items
 label snack_chosen_protein_bar:
-    FLAY "maybe I want a chip tho... should I go with the donut?"
+    FLAY "Maybe I want a chip though... Should I go with the donut?"
     menu:
         "yes":
             jump snack_chosen
         "no":
             jump show_interactive_items
 label snack_chosen_cat_fish:
-    FLAY "maybe I want a donut tho... should I go with the chip?"
+    FLAY "Maybe I want a donut though... Shhould I go with the chip?"
     menu:
         "yes":
             jump snack_chosen
@@ -384,6 +385,7 @@ label offline:
     FLAY "Alright, time to take off!"
     pause 2.0
     play music "music/error_song.mp3"
+    scene bg_pilot_room_error
     show error_1 at rtrus_screen_topleft
     show error_2 at rtrus_screen_bottommidleft
     show error_3 at rtrus_screen_topright
