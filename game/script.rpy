@@ -385,11 +385,8 @@ label offline:
     FLAY "Alright, time to take off!"
     pause 2.0
     play music "music/error_song.mp3"
-    scene bg_pilot_room_error
-    show error_1 at rtrus_screen_topleft
-    show error_2 at rtrus_screen_bottommidleft
-    show error_3 at rtrus_screen_topright
-    show error_msg at rtrus_screen_bottommidright
+    scene bg pilot_room_error
+
     with fastdissolve
     pause 2.0
     hide flayon_neutral
