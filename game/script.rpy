@@ -10,8 +10,8 @@ default preferences.text_cps = 40
 init:
     #backgrounds    
     image bg party_room=im.Scale('images/bg/bg_partyroom.png', 1920, 1200)
-    image bg pilot_room=im.Scale('images/bg/EMPTY_R-Trus Cockpit.png', 1920, 1000)
-    image bg pilot_room_error=im.Scale('images/bg/ERROR_R-Trus Cockpit.png', 1920, 1000)
+    image bg pilot_room=im.Scale('images/bg/EMPTY_R-Trus Cockpit.png', 1920, 1200)
+    image bg pilot_room_error=im.Scale('images/bg/ERROR_R-Trus Cockpit.png', 1920, 1200)
     image bg navi_cake=im.Scale('images/navi/navi_cakeneutral.png', 1920, 1200)
     image bg gas_station_inside=im.Scale('images/bg/insidedoorCLOSED_3.png', 1920, 1200)
     image bg gas_station_outside=im.Scale('images/bg/bg_gas_station_outside.png', 1920, 1200)
@@ -182,7 +182,6 @@ label start:
 label show_interactive_items:
     show screen gas_station_items
     with fastdissolve
-    "Click on an item to interact with it."
     window hide
     call screen gas_station_items
 
@@ -298,9 +297,9 @@ label intro_sequence:
     hide rtrus_screen_4
     with dissolve
     scene bg gas_station_outside with fade
-    pause 1.5
 
-    play music "music/upbeat_song.mp3"
+
+
     show flayon_concerned at charfarleft
     show navi_disgusted at charfarright
     with dissolve
@@ -338,20 +337,21 @@ label intro_sequence:
     FLAY "Alright, let's see here..."
     hide flayon_neutral
     hide navi_worried
+    "Click on an item to interact with it."
     jump show_interactive_items
 label snack_chosen_protein_bar:
     FLAY "Maybe I want a chip though... Should I go with the donut?"
     menu:
-        "yes":
+        "Yes":
             jump snack_chosen
-        "no":
+        "No":
             jump show_interactive_items
 label snack_chosen_cat_fish:
-    FLAY "Maybe I want a donut though... Shhould I go with the chip?"
+    FLAY "Maybe I want a donut though... Should I go with the chip?"
     menu:
-        "yes":
+        "Yes":
             jump snack_chosen
-        "no":
+        "No":
             jump show_interactive_items
 label snack_chosen:
     hide screen gas_station_items
@@ -362,7 +362,7 @@ label snack_chosen:
     show navi_snacks at charfarright
     with fastdissolve
     NAVI "Finally! Time to get back on track!"
-    stop music
+    stop music fadeout 1.0
     hide flayon_neutral
     hide navi_snacks
     with fastdissolve
@@ -385,7 +385,7 @@ label offline:
     FLAY "Alright, time to take off!"
     pause 2.0
     play music "music/error_song.mp3"
-    scene bg pilot_room_error
+    scene bg pilot_room_error with fade
 
     with fastdissolve
     pause 2.0
@@ -403,7 +403,7 @@ label offline:
     with fastdissolve
     FLAY "Machiroons, if you can hear this, meet me outside ASAP!"
     hide flayon_concerned with fastdissolve
-    stop music
+    stop music fadeout 1.0
     pause 0.5
     jump act2_start
 
@@ -620,10 +620,12 @@ menu:
 
 label gasstationenter:
     scene store
+    scene bg gas_station_inside with fade
     show flayon_neutral at charfarleft
     show screen storelooks
 
 label store:
+    
     show screen storelooks
     FLAY "  "
     jump store 
@@ -713,7 +715,7 @@ label securityRoomEnter2:
     jump securityRoomEnter
 
 label computer:
-    stop music
+    stop music fadeout 1.0
     hide flayon_smug
     show flayon_concentrating at charfarleft
 
