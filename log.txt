@@ -1,45 +1,48 @@
-2024-09-03 02:47:08 UTC
-Windows-10-10.0.22631
+2025-01-05 11:15:57 UTC
+Windows-10-10.0.19041
 Ren'Py 8.2.1.24030407
 
-Early init took 0.05s
+Early init took 0.08s
 Loading error handling took 0.03s
-Loading script took 0.18s
-Loading save slot metadata took 0.03s
+Loading script took 0.20s
+Loading save slot metadata took 0.04s
 Loading persistent took 0.00s
-Running init code took 0.04s
+Running init code took 0.05s
 Loading analysis data took 0.01s
 Analyze and compile ATL took 0.00s
 Reloading save slot metadata took 0.02s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\vikr4\\AppData\\Roaming/RenPy/backups\\Project_flayear':
-Dump and make backups took 0.04s
+Backing up script files to 'C:\\Users\\Angelo\\AppData\\Roaming/RenPy/backups\\Project_flayear-working-build':
+Dump and make backups took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc took 0.03s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.19s
+Creating interface object took 0.28s
 Cleaning stores took 0.00s
-Init translation took 0.03s
+Init translation took 0.02s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
-Save screen analysis took 0.02s
+Save screen analysis took 0.01s
 Prepare screens took 0.05s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.02s
 Running _start took 0.00s
-Interface start took 0.12s
+Interface start took 1.15s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
 Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce RTX 3060 Laptop GPU/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 556.13'
+Vendor: "b'Intel'"
+Renderer: b'Intel(R) UHD Graphics 630'
+Version: b'4.6.0 - Build 30.0.100.9805'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1017) drawable=(1920, 1017)
+Maximum texture size: 4096x4096
+controller: '030000004c050000cc09000000016800' 'PS4 Controller' 1
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1017) drawable=(1920, 1017)
 Maximum texture size: 4096x4096

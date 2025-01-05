@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label show_interactive_items is defined twice, at File "game/script.rpy", line 279:
-label show_interactive_items:
-and File "game/script.rpy", line 311:
-label show_interactive_items:
-
+File "game/options.rpy", line 66: invalid syntax
+    ./music/main_menu_theme.mp3
+     ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Sun Aug 11 20:07:20 2024
+Sun Jan  5 07:36:27 2025
