@@ -23,7 +23,7 @@ init:
     image flayon_surprised=im.Scale('images/flayon/2D_Sprites_Flayon_Shocked.png', 683, 683)
     image flayon_concerned=im.Scale('images/flayon/2D_Sprites_Flayon_Scared.png', 683, 683)
     image flayon_concentrating=im.Scale('images/flayon/2D_Sprites_Flayon_Thinking.png', 683, 683)
-    image flayon_smug=im.Scale('images/flayon/flayon_smug.png', 683, 683)
+    image flayon_smug=im.Scale('images/flayon//2D_Sprites_Flayon_Excited.png', 683, 683)
     image flayon_neutral_cropped = Crop((0, 0, 275, 250), "flayon_neutral")
     image flayon_concerned_cropped = Crop((0, 0, 275, 250), "flayon_concerned")
     image flayon_confused_cropped = Crop((0, 0, 275, 250), "flayon_confused")
@@ -176,6 +176,7 @@ define fastdissolve = Dissolve(0.2)
 # The game starts here.
 
 label start:
+    stop music
     # These display lines of dialogue.
     jump intro_sequence
 
@@ -359,7 +360,7 @@ label snack_chosen:
     show flayon_neutral at charfarleft
     with fastdissolve
     FLAY "OK, I'm ready! Let's go!"
-    show navi_snacks at charfarright
+    show navi_neutral at charfarright
     with fastdissolve
     NAVI "Finally! Time to get back on track!"
     stop music fadeout 1.0
@@ -421,7 +422,7 @@ label act2_start:
     show dean_concern at charmid
     show kit_concerned at charmidright
     show navi_worried at charright
-    show cain_neutral at charfarright
+    show cain_worried at charfarright
     show screen inventory_button
     DEAN "Weird… I swear I saw Charli just before you two left?"
     NAVI "Yeah, and I didn't hear anyone else leave?"
@@ -429,7 +430,7 @@ label act2_start:
     hide dean_concern
     hide kit_concerned
     hide navi_worried
-    hide cain_neutral
+    hide cain_worried
     with fastdissolve 
     queue sound "sfx/quick-mechanical-keyboard-14391.mp3"
     show screen phone
@@ -449,7 +450,9 @@ label act2_start:
         "Ok! Sounds like a plan.":
             CAIN "Let us know if you need any help!"
             hide cain_neutral
+            hide cain_worried
             show cain_flex at charfarright
+            hide cain_flex
             with fastdissolve
             jump act2_scene2
         "Hey… are you sure none of you heard anything weird?":
@@ -479,7 +482,7 @@ label act2_scene2:
     hide dean_neutral
     hide cain_neutral
     hide navi_worried
-    hide cain_flex
+    hide cain_worried
     hide kit_worried
     hide dean_concern
     hide flayon_confused
